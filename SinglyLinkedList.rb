@@ -14,4 +14,17 @@ class SinglyLinkedList
         @tail = nil
         @_length = 0
     end
+
+    #add method to insert a node to the end the list, alias is <push> linked lis
+    def add(number)
+        @newNode = Node.new(number)
+        if !@head
+            @head = @newNode
+            @tail = @head
+            @_length += 1
+        else
+            @tail.next = @newNode
+            @tail = @newNode
+        end
+    end
 end
