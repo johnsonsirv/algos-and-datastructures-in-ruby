@@ -39,10 +39,20 @@ class SinglyLinkedList
         @_length += 1
     end
 
-    
+    #get method retreives a node at specified index| 0-based index is used for this list
+    def get(index)
+        return nil if index <0 || index >= @_length
+        @foundIndex =0;
+        @current_node = @head
+        while @foundIndex != index
+            @current_node = @current_node.next_node
+            @foundIndex+=1
+        end
+        return @current_node
+    end
 end
 
 list = SinglyLinkedList.new
 list.add(3)
 list.add(4)
-pp list
+p list.get(1)
