@@ -7,3 +7,11 @@ class Node
         @next = next_node
     end
 end
+
+class SinglyLinkedList
+    def initialize
+        @head = nil
+        @tail = nil
+        @_length = 0
+    end
+end
