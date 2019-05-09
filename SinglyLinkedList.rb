@@ -21,10 +21,10 @@ class SinglyLinkedList
         if !@head
             @head = @newNode
             @tail = @head
-            @_length += 1
         else
             @tail.next = @newNode
             @tail = @newNode
         end
+        @_length += 1
     end
 end
