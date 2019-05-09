@@ -1,10 +1,9 @@
 #Singly Linked List
 class Node
     attr_accessor :value, :next_node
-
-    def initialize
+    def initialize(value, next_node = nil)
         @value = value
-        @next = next_node
+        @next_node = next_node
     end
 end
 
@@ -22,9 +21,14 @@ class SinglyLinkedList
             @head = @newNode
             @tail = @head
         else
-            @tail.next = @newNode
+            @tail.next_node = @newNode
             @tail = @newNode
         end
         @_length += 1
     end
 end
+
+list = SinglyLinkedList.new
+list.add(3)
+list.add(4)
+pp list
