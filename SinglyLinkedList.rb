@@ -15,8 +15,8 @@ class SinglyLinkedList
     end
 
     #add method to insert a node to the end the list, alias is <push> linked lis
-    def add(number)
-        @newNode = Node.new(number)
+    def add(data)
+        @newNode = Node.new(data)
         if !@head
             @head = @newNode
             @tail = @head
@@ -27,8 +27,8 @@ class SinglyLinkedList
         @_length += 1
     end
 
-    def push(number)
-        @newNode = Node.new(number)
+    def push(data)
+        @newNode = Node.new(data)
         if !@head
             @head = @newNode
             @tail = @head
@@ -40,9 +40,19 @@ class SinglyLinkedList
     end
 
     #unshift method adds a node to the head and returns true, alias is <add_to_head>
-    def unshift(item)
-        
+    def unshift(data)
+        @newNode = Node.new(data)
+        if @head.nil?
+            @head = @newNode
+            @tail = @head
+        else
+            @newNode.next_node = @head
+            @head = @newNode
+        end
+        @_length += 1
+        true
     end
+    
     #get method retreives a node at specified index| 0-based index is used for this list
     def get(index)
         return nil if index <0 || index >= @_length
