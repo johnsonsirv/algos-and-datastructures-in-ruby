@@ -39,6 +39,10 @@ class SinglyLinkedList
         @_length += 1
     end
 
+    #unshift method adds a node to the head and returns true, alias is <add_to_head>
+    def unshift(item)
+        
+    end
     #get method retreives a node at specified index| 0-based index is used for this list
     def get(index)
         return nil if index <0 || index >= @_length
@@ -57,13 +61,20 @@ class SinglyLinkedList
         # if specified index == length add/push
         #otherwise add at specified index
         return nil if index < 0 || index > @_length
-        @newNode = Node.new(item)
-        @beforeNode = 
+        return unshift(item) if index == 0
 
+        @newNode = Node.new(item)
+        @beforeNode = get(index -1)
+        @afterNode = @beforeNode.next_node
+        @beforeNode.next_node = @newNode
+        @newNode.next_node = @afterNode
+        @_length+=1
     end
 end
 
 list = SinglyLinkedList.new
 list.add(3)
 list.add(4)
+list.add_at(1, 11)
+list.add_at(0, 13)
 p list.get(1)
