@@ -52,7 +52,7 @@ class SinglyLinkedList
         @_length += 1
         true
     end
-    
+
     #get method retreives a node at specified index| 0-based index is used for this list
     def get(index)
         return nil if index <0 || index >= @_length
@@ -72,7 +72,7 @@ class SinglyLinkedList
         #otherwise add at specified index
         return nil if index < 0 || index > @_length
         return unshift(item) if index == 0
-
+        return add(item) if index == @_length
         @newNode = Node.new(item)
         @beforeNode = get(index -1)
         @afterNode = @beforeNode.next_node
@@ -84,7 +84,8 @@ end
 
 list = SinglyLinkedList.new
 list.add(3)
-list.add(4)
+list.add(5)
 list.add_at(1, 11)
 list.add_at(0, 13)
-p list.get(1)
+p list.get(2)
+p list.get(3)
