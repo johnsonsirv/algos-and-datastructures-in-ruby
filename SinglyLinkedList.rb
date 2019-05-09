@@ -81,9 +81,14 @@ class SinglyLinkedList
         @_length+=1
     end
 
+    #pop method remove from tail
+    def pop
+        
+    end
     #remove method to remove item at specified index
     def remove(index)
-        
+        return nil if index < 0 || index >= @_length
+
     end
 end
 
