@@ -80,6 +80,11 @@ class SinglyLinkedList
         @newNode.next_node = @afterNode
         @_length+=1
     end
+
+    #remove method to remove item at specified index
+    def remove(index)
+        
+    end
 end
 
 list = SinglyLinkedList.new
