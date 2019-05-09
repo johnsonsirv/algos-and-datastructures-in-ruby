@@ -26,6 +26,20 @@ class SinglyLinkedList
         end
         @_length += 1
     end
+
+    def push(number)
+        @newNode = Node.new(number)
+        if !@head
+            @head = @newNode
+            @tail = @head
+        else
+            @tail.next_node = @newNode
+            @tail = @newNode
+        end
+        @_length += 1
+    end
+
+    
 end
 
 list = SinglyLinkedList.new
