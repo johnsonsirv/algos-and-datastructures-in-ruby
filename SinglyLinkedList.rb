@@ -50,6 +50,17 @@ class SinglyLinkedList
         end
         return @current_node
     end
+
+    #add_at method to add node at specified index alias is <insert>
+    def add_at(index, item)
+        #if specified index == 0, add_to_head/unshift
+        # if specified index == length add/push
+        #otherwise add at specified index
+        return nil if index < 0 || index > @_length
+        @newNode = Node.new(item)
+        @beforeNode = 
+
+    end
 end
 
 list = SinglyLinkedList.new
