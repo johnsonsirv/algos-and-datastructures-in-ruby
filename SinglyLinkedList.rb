@@ -102,7 +102,10 @@ class SinglyLinkedList
         true
     end
 
-   
+    def shift
+        return nil if !@head
+        
+    end
     #remove method to remove item at specified index
     def remove(index)
         return nil if index < 0 || index >= @_length
