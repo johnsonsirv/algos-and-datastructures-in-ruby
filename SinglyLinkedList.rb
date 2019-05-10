@@ -141,6 +141,16 @@ class SinglyLinkedList
         true
     end
    
+    #helper method list_to_a print to display list_item as array, just to test reverse method
+    def list_to_a
+        @current = @head
+        @output = []
+        while @current
+            @output.push(@current)
+            @current = @current.next_node
+        end
+        return @output
+    end
 end
 
 # list = SinglyLinkedList.new
