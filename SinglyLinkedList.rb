@@ -159,10 +159,10 @@ list.add(2)
 list.add(3)
 list.add(4)
 p list.list_to_a
-list.reverse
-p list.list_to_a
+# list.reverse
+# p list.list_to_a
 
 # list.add_at(1, 11)
 # list.add_at(0, 13)
-# p list.get(2)
-# p list.get(3)
+p list.get(2)
+p list.get(3)
