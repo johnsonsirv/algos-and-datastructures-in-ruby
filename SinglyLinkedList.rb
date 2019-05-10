@@ -25,6 +25,7 @@ class SinglyLinkedList
             @tail = @newNode
         end
         @_length += 1
+        true
     end
 
     def push(data)
@@ -86,13 +87,27 @@ class SinglyLinkedList
         return nil if !@head
         @newTail = @head
         @temp = @newTail
-        
-
+        while !@temp.next.nil?
+            @newTail = @temp
+            @temp = @temp.next_node
+        end
+        @tail = @newTail
+        @tail.next_node = nil
+        @_length -=1
+        #reset head, tail to null after poping all nodes
+        if @_length == 0
+            @head = nil
+            @tail = nil
+        end
+        true
     end
+
+   
     #remove method to remove item at specified index
     def remove(index)
         return nil if index < 0 || index >= @_length
 
+        return pop() if index == @_length
     end
 end
 
