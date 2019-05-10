@@ -124,6 +124,22 @@ class SinglyLinkedList
         @_length-=1
     end
 
+    def reverse
+        return nil if @_length == 0
+        @current_node = @head
+        @head = @tail
+        @tail = @current_node
+        @previous = nil
+        @next = nil
+
+        while @current_node
+            @next = @current_node.next_node
+            @current_node.next_node = @previous
+            @previous = @current_node
+            @current_node = @next
+        end
+        true
+    end
    
 end
 
