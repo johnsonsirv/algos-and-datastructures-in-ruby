@@ -99,18 +99,28 @@ class SinglyLinkedList
             @head = nil
             @tail = nil
         end
-        true
+        return @temp
     end
-
+    #sift method remove from head
     def shift
         return nil if !@head
-        
+        @temp  = @head
+        @head = @temp.next_node
+        @_length-=1
+        if @_length == nil
+            @tail = nil
+        end
+        return @temp
     end
     #remove method to remove item at specified index
     def remove(index)
         return nil if index < 0 || index >= @_length
-
-        return pop() if index == @_length
+        return shift() if index == 0
+        return pop() if index == @_length-1
+        @beforeNode = get(index - 1)
+        @removed = @beforeNode.next_node
+        @beforeNode.next_node = @removed.next_node
+        @_length-=1
     end
 end
 
