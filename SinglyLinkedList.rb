@@ -38,6 +38,7 @@ class SinglyLinkedList
             @tail = @newNode
         end
         @_length += 1
+        return @newNode
     end
 
     #unshift method adds a node to the head and returns true, alias is <add_to_head>
@@ -122,12 +123,14 @@ class SinglyLinkedList
         @beforeNode.next_node = @removed.next_node
         @_length-=1
     end
+
+   
 end
 
-list = SinglyLinkedList.new
-list.add(3)
-list.add(5)
-list.add_at(1, 11)
-list.add_at(0, 13)
-p list.get(2)
-p list.get(3)
+# list = SinglyLinkedList.new
+# list.add(3)
+# list.add(5)
+# list.add_at(1, 11)
+# list.add_at(0, 13)
+# p list.get(2)
+# p list.get(3)
