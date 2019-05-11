@@ -15,8 +15,8 @@ class Stack
     end
 end
 
+
 stack = Stack.new
-    
 stack.push(3)
 stack.push(5)
 p Stack.pop
