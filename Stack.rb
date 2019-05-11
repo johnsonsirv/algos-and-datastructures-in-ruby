@@ -6,15 +6,17 @@ class Stack
     end
     def push(number)
       # your code here
-      list.push(number)
+      @list.push(number)
     end
     
     def pop
       # your code here
+      @list.pop
     end
 end
 
 stack = Stack.new
     
-stack.push(2)
-p stack.push(3)
+stack.push(3)
+stack.push(5)
+p Stack.pop
