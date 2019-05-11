@@ -11,7 +11,7 @@ class Stack
     
     def pop
       # your code here
-      @list.pop
+      return @list.pop().value
     end
 end
 
@@ -20,3 +20,14 @@ stack = Stack.new
 stack.push(3)
 stack.push(5)
 p stack.pop
+#=> 5
+stack.push(2)
+stack.push(7)
+p stack.pop
+#=>7
+
+p stack.pop
+#=>2
+
+p stack.pop
+#=> 3
