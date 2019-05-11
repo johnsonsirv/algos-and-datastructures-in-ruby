@@ -22,9 +22,25 @@ class Queue
     def dequeue
         return @list.shift.value
     end
-    
+
     #alias for dequeue method
     def pop
         return @list.shift.value
     end
 end
+
+queue = Queue.new
+queue.enqueue(3)
+queue.enqueue(5)
+p queue.dequeue
+#=> 3
+queue.enqueue(2)
+queue.enqueue(7)
+p queue.dequeue
+#=>5
+
+p queue.dequeue
+#=>2
+
+p queue.dequeue
+#=> 7
