@@ -16,5 +16,13 @@ class Queue
     def push(number)
         @list.push(number)
     end
-    
+
+    #dequeue method removes item from the queue alias is <pop>
+    def dequeue
+        return @list.shift.value
+    end
+    #alias for dequeue method
+    def pop
+        return @list.shift.value
+    end
 end
