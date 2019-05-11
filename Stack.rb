@@ -1,8 +1,8 @@
+load 'SinglyLinkedList.rb'
 class Stack
-    include SinglyLinkedList
 
     def initialize
-        @list = new SinglyLinkedList
+        @list = SinglyLinkedList.new
     end
     def push(number)
       # your code here
@@ -19,4 +19,4 @@ end
 stack = Stack.new
 stack.push(3)
 stack.push(5)
-p Stack.pop
+p stack.pop

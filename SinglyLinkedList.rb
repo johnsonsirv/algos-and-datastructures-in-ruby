@@ -88,7 +88,7 @@ class SinglyLinkedList
         return nil if !@head
         @newTail = @head
         @temp = @newTail
-        while !@temp.next.nil?
+        while !@temp.next_node.nil?
             @newTail = @temp
             @temp = @temp.next_node
         end
@@ -153,16 +153,16 @@ class SinglyLinkedList
     end
 end
 
-list = SinglyLinkedList.new
-list.add(1)
-list.add(2)
-list.add(3)
-list.add(4)
-p list.list_to_a
-# list.reverse
+# list = SinglyLinkedList.new
+# list.add(1)
+# list.add(2)
+# list.add(3)
+# list.add(4)
 # p list.list_to_a
+# # list.reverse
+# # p list.list_to_a
 
-# list.add_at(1, 11)
-# list.add_at(0, 13)
-p list.get(2)
-p list.get(3)
+# # list.add_at(1, 11)
+# # list.add_at(0, 13)
+# p list.get(2)
+# p list.get(3)
