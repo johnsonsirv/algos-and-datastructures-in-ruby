@@ -8,11 +8,13 @@ class Queue
         @list = SinglyLinkedList.new
     end
 
-    #push method adds item to the end of the queue. alias is <enqueue>
-    def push(number)
-        @list.push(number)
-    end
+    #enqueue method adds item to the end of the queue. alias is <push>
     def enqueue(number)
         @list.push(number)
     end
+    #alias for enqueue method
+    def push(number)
+        @list.push(number)
+    end
+    
 end
