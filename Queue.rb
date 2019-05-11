@@ -12,6 +12,7 @@ class Queue
     def enqueue(number)
         @list.push(number)
     end
+
     #alias for enqueue method
     def push(number)
         @list.push(number)
@@ -21,6 +22,7 @@ class Queue
     def dequeue
         return @list.shift.value
     end
+    
     #alias for dequeue method
     def pop
         return @list.shift.value
