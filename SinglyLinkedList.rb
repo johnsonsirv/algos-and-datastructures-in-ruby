@@ -151,6 +151,22 @@ class SinglyLinkedList
         end
         return @output
     end
+
+    def push_with_min(data)
+        @newNode = Node.new(data)
+        @minimum = nil
+        if !@head
+            @head = @newNode
+            @tail = @head
+            @minimum = @newNode.value
+        else
+            @tail.next_node = @newNode
+            @tail = @newNode
+            @minimum = @newNode.value < @minimum ? @newNode.value : @minimum
+        end
+        @_length += 1
+        return @minimum
+    end
 end
 
 # list = SinglyLinkedList.new
