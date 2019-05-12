@@ -12,7 +12,7 @@ class Stack
     
     def pop
       # your code here
-      return @list.pop()
+      @min = @list.pop_with_min
     end
 
     def min
@@ -39,3 +39,4 @@ puts stack.min
 stack.pop
 puts stack.min
 # => 3
+[3,7,2]

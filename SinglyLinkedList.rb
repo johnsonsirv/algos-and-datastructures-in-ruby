@@ -154,8 +154,7 @@ class SinglyLinkedList
 
     def push_with_min(data)
         @newNode = Node.new(data)
-        @minimum = nil
-        if !@head
+        if @head.nil?
             @head = @newNode
             @tail = @head
             @minimum = @newNode.value
@@ -165,6 +164,26 @@ class SinglyLinkedList
             @minimum = @newNode.value < @minimum ? @newNode.value : @minimum
         end
         @_length += 1
+        return @minimum
+    end
+    def pop_with_min
+        return nil if !@head
+        @newTail = @head
+        @temp = @newTail
+        @minimum = @temp.value
+        while !@temp.next_node.nil?
+            @newTail = @temp
+            @minimum = @newTail.value < @minimum ? @newTail.value : @minimum
+            @temp = @temp.next_node
+        end
+        @tail = @newTail
+        @tail.next_node = nil
+        @_length -=1
+        #reset head, tail to null after poping all nodes
+        if @_length == 0
+            @head = nil
+            @tail = nil
+        end
         return @minimum
     end
 end
