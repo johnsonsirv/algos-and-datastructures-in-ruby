@@ -40,4 +40,3 @@ stack.pop
 puts stack.min
 # => 3
 
-print stack.sliding_max(3, [1, 3, 5, 7, 9, 2])
