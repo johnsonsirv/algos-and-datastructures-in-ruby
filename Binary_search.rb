@@ -15,6 +15,6 @@ def sqrt(number)
   end
   
   #Test Cases
-  puts sqrt(-25)
+  puts sqrt(25)
   puts sqrt(7056)
   
