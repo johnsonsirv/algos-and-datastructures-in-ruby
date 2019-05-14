@@ -24,6 +24,7 @@ def move(starting, goal, n=2)
     end
 end
 
+#hanoi towe for any n-size of disks. The total steps taken will be 2^n - 1 to complete the tower
 def tower_of_hanoi(n, start=1, dest=3, spare=2)
     if n == 1
         print_move(start, dest)
@@ -41,5 +42,5 @@ puts move(1, 3)
 puts move(2, 3)
 # => 2->1 2->3 1->3
 
-# tower(3)
-# tower_of_hanoi(3)
+tower(3)
+tower_of_hanoi(3)
