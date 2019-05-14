@@ -10,9 +10,10 @@ mover n-1 from spare to destinaton
 
 =end
 def print_move(from, to)
-    print "#{from}->#{to} "  
+    print "#{from}->#{to}"  
 end
 
+#for a moving a fixed size from defined start, to destination
 def move(starting, goal, n=2)
     if n==1
         print_move(starting, goal)
@@ -33,12 +34,6 @@ def tower_of_hanoi(n, start=1, dest=3, spare=2)
     end
 end
 
-# def tower(n, s=1, a=2,d=3)
-#     return if n ==0
-#     tower(n-1, s, d, a)
-#     puts "#{s} -> #{d}"
-#     tower(n-1, a, s, d)
-# end
 
 puts move(1, 3)
 # => 1->2 1->3 2->3
