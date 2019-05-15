@@ -14,16 +14,21 @@ def print_move(from, to)
 end
 
 #for a moving a fixed size from defined start, to destination
-def move(starting, goal, n=2)
+def step(starting, goal, spare, n=2)
     if n==1
-        print_move(starting, goal)
-    else
-        move(starting, goal-starting, n-1)
-        move(starting, goal, 1)
-        move(goal-starting, goal, n-1)
-    end
+       print_move(starting, goal)
+   else
+     step(starting, spare, goal, n-1)
+     step(starting, goal, spare,  1)
+     step(spare, goal, starting, n-1)
+   end
+   return $steps
 end
-
+ 
+ def move(starting, goal)
+   spare = (1..3).find { |n| n != starting && n != goal }
+   step(starting, goal, spare)
+ end
 #hanoi towe for any n-size of disks. The total steps taken will be 2^n - 1 to complete the tower
 def tower_of_hanoi(n, start=1, dest=3, spare=2)
     if n == 1
@@ -36,10 +41,14 @@ def tower_of_hanoi(n, start=1, dest=3, spare=2)
 end
 
 
-# puts move(1, 3)
+puts move(1, 3)
 # => 1->2 1->3 2->3
 
-# puts move(2, 3)
+puts move(2, 3)
 # => 2->1 2->3 1->3
+puts move(1,2)
+puts move(3,2)
+puts move(3,1)
+puts move(2, 1)
 
-tower_of_hanoi(3)
+# tower_of_hanoi(3)
