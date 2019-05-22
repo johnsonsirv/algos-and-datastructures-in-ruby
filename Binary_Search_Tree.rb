@@ -28,7 +28,12 @@ class BinarySearchTree
                         @current = @current.left
                     end
                 elsif value > @current.value
-                    
+                    if @current.right.nil?
+                        @current.right = @newNode
+                        return
+                    else
+                        @current = @current.right
+                    end
                 end
             end
         end
