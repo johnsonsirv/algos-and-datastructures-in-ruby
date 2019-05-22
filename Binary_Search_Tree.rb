@@ -1,3 +1,4 @@
+# nodes in the tree
 class Node
     attr_accessor :value, :left, :right
     def initialize(value, left = nil, right = nil)
@@ -11,5 +12,7 @@ class BinarySearchTree
     end
 
     #insert method for BST
-    
+    def insert(value)
+        
+    end
 end
