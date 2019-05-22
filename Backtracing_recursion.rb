@@ -11,16 +11,27 @@ def exact_sum?(k, coins)
       exact_sum?(k-coins[coins.length - 1], coins.tap(&:pop))
     end
   end
-  $compliments = []
+  $compliments =  []
   def find_compliments(k, coins)
       if coins.length == 0
-          return $compliments
+          return $compliments.reverse
       else
           $compliments <<  k - coins[coins.length-1]
           find_compliments(k, coins.tap(&:pop))
       end
   end
-  print find_compliments(201, [37, 42, 10, 23, 15, 25, 11, 6, 19, 25, 51])
+
+  def find_sum(sum, coins)
+      if coins.length == 0
+        return $compliments.include?(sum) ? sum : 'not found'
+      else
+        sum = coins.reduce(:+)
+        print "#{sum}, "
+        find_sum(sum, coins.tap(&:pop))
+      end
+  end
+  print find_compliments(201, [37, 42, 10, 23, 15, 25 11, 6, 19, 25, 51])
+#   print find_sum(0,[37, 42, 10, 23, 15, 25, 11, 6, 19, 25, 51])
   # puts exact_sum?(12, [1, 2, 3, 4, 5])
   # => true
   
