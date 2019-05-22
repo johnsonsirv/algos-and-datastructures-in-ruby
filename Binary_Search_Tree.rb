@@ -13,6 +13,23 @@ class BinarySearchTree
 
     #insert method for BST
     def insert(value)
-        
+        @newNode = Node.new(value)
+        if @root.nil?
+            @root = @newNode
+            return
+        else
+            @current = @root
+            while true
+                if value < @current.value
+                    if @current.left.nil?
+                        @current.left = @newNode
+                        return
+                    else
+                        @current = @current.left
+                    end
+                end
+            end
+        end
+            
     end
 end
