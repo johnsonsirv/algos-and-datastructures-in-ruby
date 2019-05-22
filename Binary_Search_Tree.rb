@@ -11,7 +11,7 @@ class BinarySearchTree
         @root = nil
     end
 
-    #insert method for BST
+    #insert method for BST (sorted data)
     def insert(value)
         @newNode = Node.new(value)
         if @root.nil?
@@ -27,6 +27,8 @@ class BinarySearchTree
                     else
                         @current = @current.left
                     end
+                elsif value > @current.value
+                    
                 end
             end
         end
