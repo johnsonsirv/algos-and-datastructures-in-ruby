@@ -3,9 +3,6 @@
 While Nodes don't necessarily have a set order for their connections, in this challenge you should go to the first Node in the list of input. For example, in the above graph, go from 0 to 2 to 5 to 4 and then stop.
 
 =end
-rescue => exception
-    
-end
 def graph(hash_graph)
     # write your code here
     result =[]
@@ -39,7 +36,7 @@ def graph(hash_graph)
     5 => [4, 2]
   }
   
-  print graph(hash)
+#   print graph(hash)
   # => [0, 2, 5, 4]
 
  p graph_recursive(0, hash)
