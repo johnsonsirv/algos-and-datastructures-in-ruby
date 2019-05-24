@@ -15,15 +15,20 @@ def graph(hash_graph)
     end
     result
   end
- def graph_recursive(node, hash_graph)
-    print "#{node}, "
-     if node==4
-        return 'am done'
+ 
+ def graph_recursive(hash_graph)
+    $result =[]
+    move_next_node(0, hash_graph)
+ end
+ def move_next_node(node, hash_graph)
+    # print "#{node}, " 
+    $result << node
+    if node==4
+        return $result
      else
         next_node = hash_graph[node][0]
-        graph_recursive(next_node, hash_graph)
+        move_next_node(next_node, hash_graph)
      end
-
  end
 
   
@@ -36,8 +41,14 @@ def graph(hash_graph)
     5 => [4, 2]
   }
   
+  require "benchmark/ips"
+  Benchmark.ips do |x|
+    x.report("iteration") { graph(hash) }
+    x.report("recursive") { graph_recursive(hash) }
+    x.compare!
+  end
 #   print graph(hash)
   # => [0, 2, 5, 4]
-
- p graph_recursive(0, hash)
-  
+#  print graph_recursive(hash)
+#  out = graph_recursive(0, hash)
+# out.each{|c| print c}
