@@ -1,16 +1,17 @@
 def graph(hash_graph)
     # write your code here
     result =[]
-  end
-  
-  def draw(node, hash)
-    
-    if node == 4
-      return result
-    else
-      
+    node = 0
+    result <<  node
+    while node !=4
+        next_node = hash_graph[node][0];
+        result << next_node
+        node = next_node
     end
+    result
   end
+ 
+
   
   hash = { 
     0 => [2], 
@@ -21,6 +22,8 @@ def graph(hash_graph)
     5 => [4, 2]
   }
   
-  p graph(hash)
+  print graph(hash)
   # => [0, 2, 5, 4]
+
+#   print hash[2][0]
   
