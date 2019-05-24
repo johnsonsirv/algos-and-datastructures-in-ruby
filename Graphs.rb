@@ -3,7 +3,8 @@
 While Nodes don't necessarily have a set order for their connections, in this challenge you should go to the first Node in the list of input. For example, in the above graph, go from 0 to 2 to 5 to 4 and then stop.
 
 =end
-require "benchmark/ips"
+require "benchmark/ips" 
+require "benchmark" 
 
 def graph(hash_graph)
     # write your code here
@@ -43,10 +44,15 @@ def graph(hash_graph)
   }
   
 
-  Benchmark.ips do |x|
-    x.report("iteration") { graph(hash) }
-    x.report("recursive") { graph_recursive(hash) }
-    x.compare!
+#   Benchmark.ips do |x|
+#     x.report("iteration") { graph(hash) }
+#     x.report("recursive") { graph_recursive(hash) }
+#     x.compare!
+#   end
+
+  Benchmark.bmbm do |x|
+    x.report("iterative:") { graph(hash) }
+    x.report("recursive:") { graph_recursive(hash) }
   end
 #   print graph(hash)
   # => [0, 2, 5, 4]
