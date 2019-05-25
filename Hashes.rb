@@ -88,4 +88,9 @@ Benchmark.bm do |x|
 end
 h.each_key {|key| puts key}
 h.each_value {|value| puts value}
+
+h.has_key?("a")   #=> true
+h.has_key?("z")   #=> false
+p h.value?(100)   #=> true
+p h.has_value?(999)   #=> false
     
