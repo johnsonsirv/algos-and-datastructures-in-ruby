@@ -52,8 +52,8 @@ h1<=h2 # true because h1 equal h1
 
 h1 = { "a" => 1, "c" => 2 }
 h2 = { "c" => 2, "a" => 1 }
-h1 == h2   #=> true becuase no of keys are the same, each key/value pair is the same. order is not compared.
-
+p h1 == h2   #=> true becuase no_of keys are the same, each key/value pair is the same. order is not compared.
+p h1.eql?(h2)
 # search the hash, using a particular key, returns arrary of key/val pair if found or nil
 # hash = { 
 #     0 => [2], 
@@ -78,7 +78,7 @@ h.delete("z") { |el| "#{el} not found" }   #=> "z not found"
 p h.delete("b") { |el| "#{el} not found" }   #=>200
 
 h = { "a" => 1, "b" => 2, "c" => 3 }
-p h.delete_if {|key, value| value.odd? }   #=> {"b"=>2}
+p h.delete_if {|key, value| value.odd? }   #=> {"b"=>2} returns hash without deleted items
 
 h = { "a" => 100, "b" => 200 }
 h.each {|key, value| puts "#{key} is #{value}" }
@@ -86,4 +86,6 @@ h.each_pair {|key, value| puts "#{key} is #{value}" } #more optimized
 Benchmark.bm do |x|
     x.report("each_pair"){h.each_pair {|key, value| puts "#{key} is #{value}" }}
 end
+h.each_key {|key| puts key}
+h.each_value {|value| puts value}
     
