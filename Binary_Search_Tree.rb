@@ -41,23 +41,12 @@ class BinarySearchTree
     end
 
     def pre_order
-        # if node == nil
-        #   return ''
-        # end
-      
-        # result = "#{node.value} "
-        # result += pre_order(node.left)
-        # result += pre_order(node.right)
         @result = []
         @current = @root
         def traverse(node)
             @result.push(node.value)
-            if node.left
-                traverse(node.left)
-            end
-            if node.right
-                traverse(node.right)
-            end
+            traverse(node.left) if node.left
+            traverse(node.right) if node.right
         end
         traverse(@current)
         return @result.join(' ')
