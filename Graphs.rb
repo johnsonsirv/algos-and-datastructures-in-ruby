@@ -6,7 +6,15 @@ While Nodes don't necessarily have a set order for their connections, in this ch
 require "benchmark/ips" 
 require "benchmark" 
 
-
+def graph_with_hash_assoc(hash_graph)
+  next_node = 0
+  result= [next_node]
+  until next_node==4
+    next_node = hash_graph.assoc(next_node).last.first
+    result << next_node
+  end
+  result
+end
 
 def graph(hash_graph)
     # write your code here
@@ -45,19 +53,20 @@ def graph(hash_graph)
   }
   
 
-  # Benchmark.ips do |x|
-  #   x.report("iteration") { graph(hash) }
-  #   x.report("recursive") { graph_recursive(hash) }
-  #   x.report("graph_with_hash_assoc") { graph_with_hash_assoc(hash) }
-  #   x.compare!
-  # end
+  Benchmark.ips do |x|
+    x.report("iteration") { graph(hash) }
+    x.report("recursive") { graph_recursive(hash) }
+    x.report("graph_with_hash_assoc") { graph_with_hash_assoc(hash) }
+    x.compare!
+  end
 
-#   Benchmark.bmbm do |x|
-#     x.report("iterative:") { graph(hash) }
-#     x.report("recursive:") { graph_recursive(hash) }
-#   end
+  # Benchmark.bmbm do |x|
+  #   x.report("iterative:") { graph(hash) }
+  #   x.report("recursive:") { graph_recursive(hash) }
+  #   x.report("graph_with_hash_assoc") { graph_with_hash_assoc(hash) }
+  # end
 #   print graph(hash)
   # => [0, 2, 5, 4]
   # print graph_recursive(hash)
 
- 
+  # print graph_with_hash_assoc(hash)
