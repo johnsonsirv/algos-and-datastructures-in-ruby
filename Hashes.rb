@@ -1,3 +1,5 @@
+require "benchmark" 
+
 cars = {
     bmw: { year:2016, color:"red"},
     mercedes: { year:2012, color:"black"},
@@ -77,3 +79,11 @@ p h.delete("b") { |el| "#{el} not found" }   #=>200
 
 h = { "a" => 1, "b" => 2, "c" => 3 }
 p h.delete_if {|key, value| value.odd? }   #=> {"b"=>2}
+
+h = { "a" => 100, "b" => 200 }
+h.each {|key, value| puts "#{key} is #{value}" }
+h.each_pair {|key, value| puts "#{key} is #{value}" } #more optimized
+Benchmark.bm do |x|
+    x.report("each_pair"){h.each_pair {|key, value| puts "#{key} is #{value}" }}
+end
+    
