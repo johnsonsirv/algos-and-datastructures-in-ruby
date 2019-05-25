@@ -11,7 +11,7 @@ def graph(hash_graph)
     result =[]
     node = 0
     result <<  node
-    while node !=4
+    until node == 4 do
         next_node = hash_graph[node][0];
         result << next_node
         node = next_node
