@@ -39,3 +39,33 @@ puts "block specified as default returns: #{new_options["font_Family"]}"
 
 puts Hash["a", 100, "b", 200]             #=> {"a"=>100, "b"=>200}
 puts Hash["a" => 100, "b" => 200]         #=> {"a"=>100, "b"=>200}
+
+# Hash comparisons
+h1 = {a:1, b:2}
+h2 = {a:1, b:2, c:3}
+
+h1<h2 # true because h1 is a subset of h2
+h1<h1 # false h1 is not a subste of itself
+h1<=h2 # true because h1 equal h1
+
+h1 = { "a" => 1, "c" => 2 }
+h2 = { "c" => 2, "a" => 1 }
+h1 == h2   #=> true becuase no of keys are the same, each key/value pair is the same. order is not compared.
+
+# search the hash, using a particular key, returns arrary of key/val pair if found or nil
+hash = { 
+    0 => [2], 
+    1 => [4], 
+    2 => [5, 0, 3], 
+    3 => [2], 
+    4 => [1, 5], 
+    5 => [4, 2]
+  }
+  next_node = 0
+  result= [next_node]
+  until next_node==4
+    next_node = hash.assoc(next_node).last.first
+    result << next_node
+  end
+  print result
+  

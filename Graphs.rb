@@ -6,6 +6,8 @@ While Nodes don't necessarily have a set order for their connections, in this ch
 require "benchmark/ips" 
 require "benchmark" 
 
+
+
 def graph(hash_graph)
     # write your code here
     result =[]
@@ -30,6 +32,8 @@ def graph(hash_graph)
    move_next_node(next_node, hash_graph)
  end
 
+ 
+
   
   hash = { 
     0 => [2], 
@@ -41,11 +45,12 @@ def graph(hash_graph)
   }
   
 
-#   Benchmark.ips do |x|
-#     x.report("iteration") { graph(hash) }
-#     x.report("recursive") { graph_recursive(hash) }
-#     x.compare!
-#   end
+  # Benchmark.ips do |x|
+  #   x.report("iteration") { graph(hash) }
+  #   x.report("recursive") { graph_recursive(hash) }
+  #   x.report("graph_with_hash_assoc") { graph_with_hash_assoc(hash) }
+  #   x.compare!
+  # end
 
 #   Benchmark.bmbm do |x|
 #     x.report("iterative:") { graph(hash) }
@@ -53,4 +58,6 @@ def graph(hash_graph)
 #   end
 #   print graph(hash)
   # => [0, 2, 5, 4]
-  print graph_recursive(hash)
+  # print graph_recursive(hash)
+
+ 
