@@ -53,19 +53,27 @@ h2 = { "c" => 2, "a" => 1 }
 h1 == h2   #=> true becuase no of keys are the same, each key/value pair is the same. order is not compared.
 
 # search the hash, using a particular key, returns arrary of key/val pair if found or nil
-hash = { 
-    0 => [2], 
-    1 => [4], 
-    2 => [5, 0, 3], 
-    3 => [2], 
-    4 => [1, 5], 
-    5 => [4, 2]
-  }
-  next_node = 0
-  result= [next_node]
-  until next_node==4
-    next_node = hash.assoc(next_node).last.first
-    result << next_node
-  end
-  print result
+# hash = { 
+#     0 => [2], 
+#     1 => [4], 
+#     2 => [5, 0, 3], 
+#     3 => [2], 
+#     4 => [1, 5], 
+#     5 => [4, 2]
+#   }
+#   next_node = 0
+#   result= [next_node]
+#   until next_node==4
+#     next_node = hash.assoc(next_node).last.first
+#     result << next_node
+#   end
+#   print result
   
+h = { "a" => 100, "b" => 200 }
+p h.delete("a")                              #=> 100
+p h.delete("z")                              #=> nil
+h.delete("z") { |el| "#{el} not found" }   #=> "z not found"
+p h.delete("b") { |el| "#{el} not found" }   #=>200
+
+h = { "a" => 1, "b" => 2, "c" => 3 }
+p h.delete_if {|key, value| value.odd? }   #=> {"b"=>2}
