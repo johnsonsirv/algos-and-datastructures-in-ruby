@@ -24,13 +24,10 @@ def graph(hash_graph)
     move_next_node(0, hash_graph)
  end
  def move_next_node(node, hash_graph)
-    $result << node
-    if node==4
-        return $result
-     else
-        next_node = hash_graph[node][0]
-        move_next_node(next_node, hash_graph)
-     end
+   $result << node
+   return $result if node==4
+   next_node = hash_graph[node][0]
+   move_next_node(next_node, hash_graph)
  end
 
   
@@ -50,10 +47,10 @@ def graph(hash_graph)
 #     x.compare!
 #   end
 
-  Benchmark.bmbm do |x|
-    x.report("iterative:") { graph(hash) }
-    x.report("recursive:") { graph_recursive(hash) }
-  end
+#   Benchmark.bmbm do |x|
+#     x.report("iterative:") { graph(hash) }
+#     x.report("recursive:") { graph_recursive(hash) }
+#   end
 #   print graph(hash)
   # => [0, 2, 5, 4]
-#   print graph_recursive(hash)
+  print graph_recursive(hash)
