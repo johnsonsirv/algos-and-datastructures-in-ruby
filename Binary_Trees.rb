@@ -18,10 +18,7 @@ class Node
   end
   
   def pre_order(node)
-    if node == nil
-      return ''
-    end
-  
+    return '' if node.nil?
     result = "#{node.data} "
     result += pre_order(node.left)
     result += pre_order(node.right)
@@ -29,9 +26,7 @@ class Node
   
   def post_order(node)
     # your code here
-    if node == nil
-      return ''
-    end
+    return '' if node.nil?
     result = post_order(node.left)
     result += post_order(node.right)
     result += "#{node.data} "
