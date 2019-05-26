@@ -1,4 +1,5 @@
 require "benchmark" 
+require "benchmark/ips" 
 
 cars = {
     bmw: { year:2016, color:"red"},
@@ -83,9 +84,7 @@ p h.delete_if {|key, value| value.odd? }   #=> {"b"=>2} returns hash without del
 h = { "a" => 100, "b" => 200 }
 h.each {|key, value| puts "#{key} is #{value}" }
 h.each_pair {|key, value| puts "#{key} is #{value}" } #more optimized
-Benchmark.bm do |x|
-    x.report("each_pair"){h.each_pair {|key, value| puts "#{key} is #{value}" }}
-end
+
 h.each_key {|key| puts key}
 h.each_value {|value| puts value}
 
@@ -93,4 +92,25 @@ h.has_key?("a")   #=> true
 h.has_key?("z")   #=> false
 p h.value?(100)   #=> true
 p h.has_value?(999)   #=> false
-    
+
+#invert a hash- code application
+#modify this program that accepts a hash (already declared using hash literal), and 
+#--- returns true if no key has the same value(each key has unique value), OR
+#--- returns false if two (or more) keys have the same value.
+# constraint: code implementation should not exceed two lines 
+hash = { "a"=> 1, "b"=> 3, "c"=> 1 }
+#write program below this line
+p hash.size == h.invert.size #=> false
+def unique_values_uniq(hash)
+    values = hash.values
+    values.length == values.uniq.length ? true : false
+end
+def unique_values_invert(hash)
+ return hash.size == hash.invert.size #by performance, this is slower as no of duplicates increase  
+end
+
+Benchmark.ips do |x|
+    x.report("unique_values_uniq"){unique_values_uniq(hash) }
+    x.report("unique_values_invert"){unique_values_invert(hash) }
+    x.compare!
+end
