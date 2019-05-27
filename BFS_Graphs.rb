@@ -54,10 +54,9 @@ hash_graph_1={
       6=>[2]
     }
     #[0, 1, 2, 3, 4, 5, 6]
-  p graph_BFS(hash_graph_1)
+#   p graph_BFS(hash_graph_1)
 
-  # Benchmark.ips do |x|
-#     x.report("unique_values_uniq"){unique_values_uniq(hash) }
-#     x.report("unique_values_invert"){unique_values_invert(hash) }
-#     x.compare!
-# end
+Benchmark.ips do |x|
+    x.report("graph_BFS"){graph_BFS(hash_graph_7) }
+    
+end
