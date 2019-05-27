@@ -21,7 +21,20 @@ def graph_BFS(hash_graph)
   result
 end
 
+def graph_BFS_recursive(hash_graph)
+    result= []
+    visited =[0]
+    queue = [0]
 
+end
+
+def bfs_recurse(hash_graph, queue)
+    if queue.empty?
+        return
+    else
+        
+    end
+end
 hash_graph_1={
     0 => [2], 
     1 => [4], 
