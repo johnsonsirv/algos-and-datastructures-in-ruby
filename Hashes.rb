@@ -98,9 +98,10 @@ p h.has_value?(999)   #=> false
 #--- returns true if no key has the same value(each key has unique value), OR
 #--- returns false if two (or more) keys have the same value.
 # constraint: code implementation should not exceed two lines 
-hash = { "a"=> 1, "b"=> 3, "c"=> 1 }
+hash = { "a"=> 1, "b"=> [1,3], "c"=> 1 }
 #write program below this line
 p hash.size == h.invert.size #=> false
+print hash.values_at("b")
 def unique_values_uniq(hash)
     values = hash.values
     values.length == values.uniq.length ? true : false
@@ -109,8 +110,8 @@ def unique_values_invert(hash)
  return hash.size == hash.invert.size #by performance, this is slower as no of duplicates increase  
 end
 
-Benchmark.ips do |x|
-    x.report("unique_values_uniq"){unique_values_uniq(hash) }
-    x.report("unique_values_invert"){unique_values_invert(hash) }
-    x.compare!
-end
+# Benchmark.ips do |x|
+#     x.report("unique_values_uniq"){unique_values_uniq(hash) }
+#     x.report("unique_values_invert"){unique_values_invert(hash) }
+#     x.compare!
+# end
