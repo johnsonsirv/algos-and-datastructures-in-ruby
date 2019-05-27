@@ -21,19 +21,37 @@ def graph_BFS(hash_graph)
   result
 end
 
-def graph_BFS_recursive(hash_graph)
+def graph_BFS_with_keyword_args(graph: hash_graph)
     result= []
     visited =[0]
     queue = [0]
-
-end
-
-def bfs_recurse(hash_graph, queue)
-    if queue.empty?
-        return
-    else
-        
+    until queue.empty?
+      current_node = queue.shift
+      result << current_node
+      graph[current_node].each do|value|
+        queue << value and visited << value unless visited.include? value
+      end
     end
+    result
+  end
+
+def model_solution(graph)
+    queue = [0]
+    result = []
+    visited = []
+    
+    until queue.empty?
+      head = queue.shift
+      result << head
+      visited << head
+      
+      not_visited = graph[head].reject { |node| visited.include? node }
+      
+      visited += not_visited
+      queue += not_visited
+    end
+    
+    result
 end
 hash_graph_1={
     0 => [2], 
@@ -73,5 +91,7 @@ hash_graph_1={
 
 Benchmark.ips do |x|
     x.report("graph_BFS"){graph_BFS(hash_graph_7) }
-    
+    x.report("graph_BFS_with_keyword_args"){graph_BFS_with_keyword_args(graph: hash_graph_7) }
+    x.report("model_solution"){model_solution(hash_graph_7) }
+    x.compare!
 end
