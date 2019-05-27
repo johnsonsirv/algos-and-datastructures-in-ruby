@@ -20,6 +20,8 @@ def graph_BFS(hash_graph)
   end
   result
 end
+
+
 hash_graph_1={
     0 => [2], 
     1 => [4], 
