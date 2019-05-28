@@ -13,3 +13,16 @@ p is_dynamic(2, 4, "i")
 
 
 #keyword arguments
+def foo(bar: 'default')
+    puts bar
+end
+foo #> default
+foo(bar: "baz") #=> baz
+# making keyword args required
+def foo(bar:)
+    puts bar
+end
+foo # => ArgumentError: missing keyword: bar
+foo(bar: 'baz') # => 'baz'
+
+
