@@ -34,3 +34,4 @@ foo # => 'default'
 foo(bar: 'baz with block') # => 'baz'
 
 print ["jamie", "jax", "holliday", "today", "zapier"].sort
+print ["jamie", "jax", "holliday", "today", "zapier"].sort{|first, second|  first.length - second.length}
