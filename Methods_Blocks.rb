@@ -22,7 +22,15 @@ foo(bar: "baz") #=> baz
 def foo(bar:)
     puts bar
 end
-foo # => ArgumentError: missing keyword: bar
+# foo # => ArgumentError: missing keyword: bar
 foo(bar: 'baz') # => 'baz'
 
 
+# Defining block methods
+define_method(:foo) do |bar: 'default'|
+    puts bar
+end
+foo # => 'default'
+foo(bar: 'baz with block') # => 'baz'
+
+print ["jamie", "jax", "holliday", "today", "zapier"].sort
