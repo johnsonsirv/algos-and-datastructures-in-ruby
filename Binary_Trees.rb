@@ -37,7 +37,7 @@ def binary_tree_height(node)
   return 0 if node.nil?
   left = binary_tree_height(node.left)
   right = binary_tree_height(node.right)
-  left > right ? left+1 : right+1
+  [left, right].max + 1
 end
 
 
