@@ -1,6 +1,6 @@
 # Working with methods
 
-#d dynamic optional params =>array
+# dynamic optional params =>array
 def is_dynamic (*p)
      p
 end
@@ -52,11 +52,25 @@ def squares(a, b, c)
   return a*a, b*b, c*c
 end
 arr = squares(2, 3, 6)
-print arr
+p arr
 
 # Chaining Methods with iterators
 def square(x)
   x*x
 end
 
-square(4).times {puts "Hi"}
+
+# square(4).times {puts "Hi"}
+# using method() to call :methods
+p method(:square).call(5)
+
+# returns indication of no of args accepted by a method, keyword args are considered as single
+p method(:square).arity
+
+def optional_method(scalar, *vector)
+  p vector
+  vector.map {|scalar, val|  val}
+end
+p optional_method(1,2,3).source_location
+
+
