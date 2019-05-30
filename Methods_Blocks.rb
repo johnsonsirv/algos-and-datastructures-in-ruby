@@ -37,8 +37,8 @@ print ["jamie", "jax", "holliday", "today", "zapier"].sort
 print ["jamie", "jax", "holliday", "today", "zapier"].sort{|first, second|  first.length - second.length}
 
 class Bicycle
-  atrr_accessor :make, :color, :frame_size, :weight
-  def initialize
+  attr_accessor :make, :color, :frame_size, :weight
+  def initialize(make: 'default', color:, frame_size:, weight:)
     @make = make
     @color = color
     frame_size = frame_size
@@ -46,3 +46,17 @@ class Bicycle
   end
 end
 Bicycle.new(make:'Canyon', color: 'black', frame_size: '178cm', weight: '7.8kg')
+
+# Returning multiple values
+def squares(a, b, c)
+  return a*a, b*b, c*c
+end
+arr = squares(2, 3, 6)
+print arr
+
+# Chaining Methods with iterators
+def square(x)
+  x*x
+end
+
+square(4).times {puts "Hi"}
