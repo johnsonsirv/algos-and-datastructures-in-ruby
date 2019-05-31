@@ -40,13 +40,29 @@ def binary_tree_height(node)
   [left, right].max + 1
 end
 
+def balanced_tree?(array_tree)
+  # write your code here
+  tree = array_to_tree(array_tree, 0)
+  isBalanced?(tree)
+end
+
+def isBalanced?(node)
+  return true  if node.nil?
+  left_height = binary_tree_height(node.left)
+  right_height = binary_tree_height(node.right)
+  return true if (left_height - right_height).abs <=1 && isBalanced?(node.left) && isBalanced?(node.right)
+
+  return false;
+end
 
   # tree = array_to_tree([10, 1, 2, 3, 4, 5, 6], 0)
-  tree = array_to_tree([2, 7, 5, 2, 6, 0, 9], 0)
+  # tree = array_to_tree([1, 2, 0, 3, 4, 0, 0], 0)
   # puts post_order(tree)
   #=> 3 4 1 5 6 2 10
 
-  puts binary_tree_height(tree)
+  # puts binary_tree_height(tree)
+
+  puts balanced_tree?([1, 2, 3, 4, 5, 6, 7])
 # => 3
 # [1, 7, 5, 2, 6, 0, 9, 3, 7, 5, 11, 0, 0, 4, 0] =>4
 # [5, 3, 2, 9, 0, 0, 7, 0, 0, 0, 0, 0, 0, 5, 0] => 4

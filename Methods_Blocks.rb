@@ -66,11 +66,12 @@ p method(:square).call(5)
 
 # returns indication of no of args accepted by a method, keyword args are considered as single
 p method(:square).arity
+p method(:square).source_location # => [filename, linno]
 
 def optional_method(scalar, *vector)
   p vector
   vector.map {|scalar, val|  val}
 end
-p optional_method(1,2,3).source_location
+p optional_method(1,2,3)
 
 
