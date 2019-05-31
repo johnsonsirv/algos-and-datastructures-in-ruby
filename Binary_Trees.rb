@@ -1,3 +1,5 @@
+require 'benchmark/ips'
+
 class Node
   attr_reader :data
   attr_accessor :left, :right
@@ -40,11 +42,7 @@ def binary_tree_height(node)
   [left, right].max + 1
 end
 
-def balanced_tree?(array_tree)
-  # write your code here
-  tree = array_to_tree(array_tree, 0)
-  isBalanced?(tree)
-end
+
 
 def isBalanced?(node)
   return true  if node.nil?
@@ -55,6 +53,36 @@ def isBalanced?(node)
   return false;
 end
 
+def is_balanced_optimized?(node, is_balanced)
+  # base case  empty tree or tree is not balaced
+  return 0 if node.nil? || !$is_balanced
+  left_height = is_balanced_optimized?(node.left, $is_balanced)
+  right_height = is_balanced_optimized?(node.right, $is_balanced)
+  $is_balanced = false if (left_height - right_height).abs > 1
+
+  [left_height, right_height].max + 1
+end
+
+def balanced_tree_optimized?(array_tree)
+  # write your code here
+  $is_balanced = true
+  tree = array_to_tree(array_tree, 0)
+  is_balanced_optimized?(tree, $is_balanced)
+  $is_balanced
+end
+
+def balanced_tree?(array_tree)
+  # write your code here
+  tree = array_to_tree(array_tree, 0)
+  isBalanced?(tree)
+end
+
+
+Benchmark.ips do |x|
+  x.report("bal: "){balanced_tree?([1, 2, 0, 3, 4, 0, 0]) }
+  x.report("bal_optimized: "){balanced_tree_optimized?([1, 2, 0, 3, 4, 0, 0]) }
+  x.compare!
+end
   # tree = array_to_tree([10, 1, 2, 3, 4, 5, 6], 0)
   # tree = array_to_tree([1, 2, 0, 3, 4, 0, 0], 0)
   # puts post_order(tree)
@@ -62,7 +90,7 @@ end
 
   # puts binary_tree_height(tree)
 
-  puts balanced_tree?([1, 2, 3, 4, 5, 6, 7])
+  # puts balanced_tree?([1, 2, 0, 3, 4, 0, 0])
 # => 3
 # [1, 7, 5, 2, 6, 0, 9, 3, 7, 5, 11, 0, 0, 4, 0] =>4
 # [5, 3, 2, 9, 0, 0, 7, 0, 0, 0, 0, 0, 0, 5, 0] => 4
