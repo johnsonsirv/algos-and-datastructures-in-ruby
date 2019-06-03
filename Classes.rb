@@ -1,20 +1,21 @@
 class Person
-  attr_reader :name, :age
+  # attr_reader :name, :age
+  attr_writer :name, :age
   #setting attributes (set)
-  def name=(str)
-    @name = str
-  end
-  def age=(num)
-    @age = num
-  end
+  # def name=(str)
+  #   @name = str
+  # end
+  # def age=(num)
+  #   @age = num
+  # end
 
   #getting attributes (get) - the old fashioned way 
-  # def name
-  #   @name
-  # end
-  # def age
-  #   @age
-  # end
+  def name
+    @name
+  end
+  def age
+    @age
+  end
 end
 
 p = Person.new
