@@ -7,7 +7,7 @@ class Person
     @age = num
   end
 
-  #getting attributes (get)
+  #getting attributes (get) - the old fashioned way 
   def name
     @name
   end
