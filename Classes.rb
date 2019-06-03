@@ -1,4 +1,6 @@
 class Person
+  # class atrrib - variable
+  @@count = 0
   # attr_reader :name, :age
   # attr_writer :name, :age
   attr_accessor :name, :age
@@ -22,11 +24,12 @@ class Person
   def initialize(obj_name, obj_age)
     @name = obj_name
     @age = obj_age
+    @@count += 1
   end
 
-  # using the self keyword
-  def return_self
-    self
+ # class methods (Static methods)
+  def self.how_many
+    @@count
   end
 end
 
@@ -41,5 +44,6 @@ end
 # puts p2.name
 
 p3 = Person.new("Kelly Done", 50)
-puts p3.return_self.name
-puts p3.return_self.age
+# puts p3.return_self.name
+# puts p3.return_self.age
+p Person.how_many
