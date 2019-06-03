@@ -43,7 +43,31 @@ end
 # p2.age = 23
 # puts p2.name
 
-p3 = Person.new("Kelly Done", 50)
+# p3 = Person.new("Kelly Done", 50)
 # puts p3.return_self.name
 # puts p3.return_self.age
-p Person.how_many
+# p Person.how_many
+
+# Inheritance
+class ParentClass
+  attr_accessor :name
+  def initialize(name)
+    @name = name
+    puts "Parent class construtor"   
+  end
+  def parent_method
+    puts "Instance method in parent class"
+  end
+end
+
+class SubClass < ParentClass
+  def initialize
+    super # calls the parent class constructor
+  end 
+  def sub_method
+    puts "Instance method in child class"
+  end
+end
+
+
+
