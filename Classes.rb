@@ -23,6 +23,11 @@ class Person
     @name = obj_name
     @age = obj_age
   end
+
+  # using the self keyword
+  def return_self
+    self
+  end
 end
 
 # p = Person.new
@@ -36,5 +41,5 @@ end
 # puts p2.name
 
 p3 = Person.new("Kelly Done", 50)
-puts p3.name
-puts p3.age
+puts p3.return_self.name
+puts p3.return_self.age
