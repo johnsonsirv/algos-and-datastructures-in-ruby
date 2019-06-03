@@ -61,7 +61,7 @@ class ParentClass
 end
 
 class SubClass < ParentClass
-  def initialize
+  def initialize(name)
     super # calls the parent class constructor
   end 
   def sub_method
@@ -69,5 +69,8 @@ class SubClass < ParentClass
   end
 end
 
-
+child_obj = SubClass.new("MVA")
+child_obj.parent_method
+p child_obj.name
+child_obj.sub_method
 
