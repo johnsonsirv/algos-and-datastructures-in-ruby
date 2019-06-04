@@ -138,3 +138,51 @@ end
 
 puts "String time: #{string_time} seconds."
 puts "Symbol time: #{symbol_time} seconds."
+
+# night at the movies app
+movies = {
+    end_game: 3,
+    thrones: 6,
+    infinity: 1
+    }
+  puts "Choose action to perform"
+  puts "-- add to add"
+  puts "-- update to update"
+  puts "-- display to show movies"
+  puts "-- delete to remove movies"
+  choice = gets.chomp
+  case choice
+    when "add"
+        puts "Enter movie title"
+        title = gets.chomp
+        puts "Movie rating?"
+        rating = gets.chomp
+        if movies[title.to_sym].nil?
+        movies[title.to_sym] = rating.to_i
+      else
+        puts "Movie already exists"
+      end
+    when "update"
+        puts "Enter movie title"
+        title = gets.chomp
+        unless movies[title.to_sym].nil?
+        puts "New Movie rating?"
+            rating = gets.chomp
+        movies[title.to_sym] = rating.to_i
+      else
+        puts "Movie not found to update"
+      end
+    when "display"
+        movies.each{ |movie, rating| puts "#{movie}: #{rating}" }  	
+    when "delete"
+        puts "Enter movie title"
+        title = gets.chomp
+        unless movies[title.to_sym].nil?
+        movies.delete(title.to_sym)
+      else
+        puts "Movie not found to delete"
+      end
+      else
+    puts "Error!"
+  end
+ 
