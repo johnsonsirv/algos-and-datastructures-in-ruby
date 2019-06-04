@@ -74,4 +74,10 @@ def optional_method(scalar, *vector)
 end
 p optional_method(1,2,3)
 
+# validations using call/response
+age = 26
+p age.respond_to?(:next) # => true
+p age.respond_to?(:zip) # => false
+
+
 
