@@ -6,7 +6,9 @@ def graph_cycle?(graph)
   
 end
 
-
+def has_cycle_by_DFS?(dfs_graph: graph, dfs_visited: visited, current_vertex: vertex, parent_vertex: parent)
+  
+end
 
 puts graph_cycle?({
   0=>[2], 
