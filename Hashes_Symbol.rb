@@ -185,4 +185,5 @@ movies = {
       else
     puts "Error!"
   end
+  puts movies
  

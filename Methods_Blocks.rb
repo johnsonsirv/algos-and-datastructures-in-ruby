@@ -79,5 +79,13 @@ age = 26
 p age.respond_to?(:next) # => true
 p age.respond_to?(:zip) # => false
 
+# Reflections
+x = 1                    # This is the value we're working with
+
+x.is_a? Fixnum           # true: x is a Fixnum
+x.is_a? Integer          # true: x is an Integer
+x.is_a? Numeric          # true: x is a Numeric
+x.is_a? Comparable       # true: works with mixin modules, too
+x.is_a? Object           # true for any value of x
 
 
