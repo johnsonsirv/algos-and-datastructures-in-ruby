@@ -2,7 +2,7 @@ def repeat(times)
     1.upto(times) do
       yield
     end
-  end
+end
   repeat(3){puts "Hello World!"}
 
   #Let's create a program that will count the frequency of letters (number of occurrences) in a given string. 
