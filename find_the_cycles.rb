@@ -6,6 +6,8 @@ def graph_cycle?(graph)
   
 end
 
+
+
 puts graph_cycle?({
   0=>[2], 
   1=>[4], 
