@@ -15,7 +15,7 @@ def has_cycle_by_DFS?(dfs_graph: graph, dfs_visited: visited, dfs_vertex: vertex
     unless dfs_visited[neighbour]
       return true if has_cycle_by_DFS?(dfs_graph: dfs_graph, dfs_visited: dfs_visited, dfs_vertex: neighbour, parent_vertex: dfs_vertex)
     else
-      return true unless neighbour.eql? parent_vertex
+      return true unless neighbour.eql? parent_vertex # back-edge between parent-vertex
     end
   end
   false # false no back-edge was found
