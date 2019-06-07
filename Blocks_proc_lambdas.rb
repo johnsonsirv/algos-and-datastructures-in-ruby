@@ -1,8 +1,8 @@
 cube = Proc.new { |x| x ** 3 }
 
 # using th & to covert proc to block for methods that expect block
-p [1, 2, 3].map!(&cube)
-p 3.4.floor
+# p [1, 2, 3].map!(&cube)
+# p 3.4.floor
 
 # Symbol to Proc using &:method_name
 numbers_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -54,3 +54,41 @@ def repeat(n)
 end
 # repeat(2){ |y| puts y if y.length > 3}
 repeat(3)
+
+def trying(im)
+  # raise TypeError.new("can't iterate range input") if !im.begin.respond_to?(:succ) && im.is_a?(Range)
+  result =[]
+  im.select{ |elem| elem.odd?}
+  # result
+end
+p trying(1..9)
+
+def my_each(data)
+  
+  0.upto(data.size - 1) { |i| yield(data.to_a[i]) }
+end
+
+def my_select(data)
+  return self.enum_for(:my_select) unless block_given?
+  output =[]
+  my_each(data){ |elem| output << elem if yield(elem)}
+  output
+end
+
+def my_all?(data)
+  unless block_given?
+    my_each(data){ |item| return false unless item} 
+  else
+    my_each(data){ |elem| return false unless yield(elem)}
+  end
+  true  
+end
+p my_all?([]) { |e| e.is_a?(Integer) } # empty array returns true
+
+p (1..3).all?{ |e| e.odd?} #true unless block returns false
+p my_all?([nil, true, 99]) # test for implicit
+
+
+
+
+
