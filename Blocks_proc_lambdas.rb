@@ -61,7 +61,7 @@ def trying(im)
   im.select{ |elem| elem.odd?}
   # result
 end
-p trying(1..9)
+# p trying(1..9)
 
 def my_each(data)
   
@@ -75,7 +75,9 @@ def my_select(data)
   output
 end
 
-def my_all?(data)
+def my_all?(data, *args)
+  p args.size unless args.empty?
+  # return data.grep(args.first).size == data.size if args
   unless block_given?
     my_each(data){ |item| return false unless item} 
   else
@@ -83,11 +85,24 @@ def my_all?(data)
   end
   true  
 end
-p my_all?([]) { |e| e.is_a?(Integer) } # empty array returns true
+# raise TypErro if range is bad
+p my_all?([1,2,4,5], /t/) { |e| e.is_a?(Integer) } # empty array returns true
 
-p (1..3).all?{ |e| e.odd?} #true unless block returns false
-p my_all?([nil, true, 99]) # test for implicit
+# p my_all?(1..3){ |e| e.odd?} #true unless block returns false
+# p my_all?([nil, true, 99]) # test for implicit
+# p [1, 2i, 3.14].all?(Numeric) 
+# p (1..3).all?(Numeric) #if optional args is provided, use it 
+# p %w[aill tok tap].all?(/t/) # collections contain /t/
+# p %w[aill tok tap cat jef pat].grep(/t/) # returns an array
+# p my_all?(%w[ant beart cat], /t/)
+# p my_all?(%w[ant bear cat], /t/){ |e| e.length > 2} #ignore the block if args is provided
+# p my_all?(%w[ant bear cat], Numeric){ |e| e.length > 2} #ignore the block if args is provided
+# p my_all?(1..3, Integer)
 
+p [1, 2, 4,2,2].count(2){ |elem| elem.odd?}
+p 2.eql? 2
+p 2 == 2
+p 2 === "2"
 
 
 
