@@ -103,6 +103,9 @@ p [1, 2, 4,2,2].count(2){ |elem| elem.odd?}
 p 2.eql? 2
 p 2 == 2
 p 2 === "2"
+acc = [].empty? ? 4 : 7
+p acc
+p (5..10).inject { |sum, n| sum + n } 
 
 
 
