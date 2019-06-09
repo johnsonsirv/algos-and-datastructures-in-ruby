@@ -85,6 +85,22 @@ def my_all?(data, *args)
   end
   true  
 end
+
+def my_inject(data)
+  acc = 1
+  data = data.to_a
+  0.upto(data.size - 1) do |i|
+    p " acc-inside: #{acc}, elem-ins: #{data[i]}"
+     acc = yield(acc, data[i])
+   p "sum #{acc}"
+  end
+  p " acc: #{acc}"
+end
+my_inject(5..10) do |e,f| 
+  p "sum-e: #{e}, elem-f #{f}"
+  p "e+f: #{e*f}c"
+  e * f 
+end
 # raise TypErro if range is bad
 p my_all?([1,2,4,5], /t/) { |e| e.is_a?(Integer) } # empty array returns true
 
