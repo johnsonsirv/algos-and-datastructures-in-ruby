@@ -121,35 +121,22 @@ p my_all?([1,2,4,5], /t/) { |e| e.is_a?(Integer) } # empty array returns true
 # p my_all?(%w[ant bear cat], Numeric){ |e| e.length > 2} #ignore the block if args is provided
 # p my_all?(1..3, Integer)
 
-# def my_map(data, *proc)
-#   p proc.class
-#   raise TypeError.new("vic wrong argmument type (expected Proc)") unless proc.is_a?(Proc)
-#   output = []
-#   my_each(data) { |elem| output << yield(elem) }
-#   output
-# end
 def my_map(data, *proc)
-  raise ArgumentError.new("Supplied argument not a proc") unless block_given? || proc.is_a?(Proc)
-  
-  result = []
-  unless proc.empty?
-      0.upto(data.length - 1) {|index| result << proc.first.call(data.to_a[index])}
-      return result
-  end
-
-  return data.to_enum(:my_map) unless block_given?
-
-  0.upto(data.size - 1) {|index| result << yield(data.to_a[index])}
-  result
+  raise TypeError.new("argument expected to be proc - &proc") if !proc.empty? && !proc.first.is_a?(Proc)
+  return self.enum_for(:my_map) unless block_given?
+  output = []
+  my_each(data) { |elem| output << yield(elem) }
+  output
 end
+
 
 proc_block = Proc.new { |i| i* i }
 p proc_block.class
 # p [1,2,3,4].map(&4)
 # p (1..4).map { "cat"  }
 p "-----"
-# p my_map([1,2,3,4], proc_block)
+p my_map([1,2,3,4], proc_block)
 # p my_map(1..4) { "cat"  }
-p proc_block.to_proc
+
 
 
