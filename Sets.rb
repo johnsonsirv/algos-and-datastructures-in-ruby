@@ -14,7 +14,6 @@ set.add?(1) #-> returns nil if elem already exists in set
 [1, 2, 3, 1, 5, 6, 7, 8, 5, 2] - [1, 2, 3, 5, 6, 7, 8]
 
 def find_duplicates_set_approach(array)
-  # write your code here
   duplicates = []
   
 end
@@ -47,7 +46,13 @@ def find_duplicates_diff_alg(array)
 end
 
 def find_duplicates_using_hash_set(array)
-  
+  duplicates = Hash.new(0)
+  result = []
+  array.each do |elem|
+    duplicates[elem] += 1
+    result << elem if duplicates[elem] > 1
+  end
+  result
 end
 
 p find_duplicates_using_hash_set([1, 2, 3, 1, 5, 6, 7, 8, 5, 2])
