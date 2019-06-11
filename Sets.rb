@@ -7,6 +7,11 @@ Given a list of numbers, return an array with all the duplicates in the order th
 Use Ruby's Set class to solve the challenge.
 =end
 p [1, 2, 3, 1, 5, 6, 7, 8, 5, 2].to_set
+set = Set[1, 2, 3, 1, 5, 6, 7, 8, 5, 2]
+p Set.new([1, 2, 3, 1]) { |x| x * x }      #=> #<Set: {1, 4, 9}>
+p set.add(1) # =>returns self
+p set.add?(1) #-> returns nil if elem already exists in set
+
 def find_duplicates(array)
   # write your code here
   duplicates = []
