@@ -1,4 +1,5 @@
 require 'set'
+require 'benchmark/ips'
 =begin
   
 A duplicate is a number whose value appeared earlier in the list.
@@ -11,10 +12,11 @@ set = Set[1, 2, 3, 1, 5, 6, 7, 8, 5, 2]
 Set.new([1, 2, 3, 1]) { |x| x * x }      #=> #<Set: {1, 4, 9}>
 set.add(1) # =>returns self
 set.add?(1) #-> returns nil if elem already exists in set
-[1, 2, 3, 1, 5, 6, 7, 8, 5, 2] - [1, 2, 3, 5, 6, 7, 8]
+
 
 def find_duplicates_set_approach(array)
   duplicates = []
+
   
 end
 
@@ -55,9 +57,14 @@ def find_duplicates_using_hash_set(array)
   result
 end
 
-p find_duplicates_using_hash_set([1, 2, 3, 1, 5, 6, 7, 8, 5, 2])
+# p find_duplicates_using_hash_set([1, 2, 3, 1, 5, 6, 7, 8, 5, 2])
 # => [1, 5, 2]
 
 # p find_duplicates([3, 501, 17, 23, -43, 67, 5, 888, -402, 235, 77, 99, 311, 1, -43])
 # => [-43]
 
+Benchmark.ips do |x|
+  x.report("hash set: ") {find_duplicates_using_hash_set([1, 2, 3, 1, 5, 6, 7, 8, 5, 2]) }
+  x.report("diff algo: ") {find_duplicates_diff_alg([1, 2, 3, 1, 5, 6, 7, 8, 5, 2]) }
+  x.compare!
+end
