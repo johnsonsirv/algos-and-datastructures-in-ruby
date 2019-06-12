@@ -60,7 +60,6 @@ end
 def appears_most_times(array)
   duplicates = Hash.new(0)
   array.each { |elem| duplicates[elem] += 1 }
-  p duplicates
   duplicates.max_by { |key, value| value }.first
 end
 
