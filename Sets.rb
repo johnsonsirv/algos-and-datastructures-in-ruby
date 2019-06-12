@@ -16,7 +16,7 @@ set.add?(1) #-> returns nil if elem already exists in set
 
 def find_duplicates_set_approach(array)
   duplicates = []
-
+  
   
 end
 
@@ -57,14 +57,24 @@ def find_duplicates_using_hash_set(array)
   result
 end
 
+def appears_most_times(array)
+  duplicates = Hash.new(0)
+  array.each { |elem| duplicates[elem] += 1 }
+  p duplicates
+  duplicates.max_by { |key| duplicates[key] }.first
+end
+
 # p find_duplicates_using_hash_set([1, 2, 3, 1, 5, 6, 7, 8, 5, 2])
 # => [1, 5, 2]
 
 # p find_duplicates([3, 501, 17, 23, -43, 67, 5, 888, -402, 235, 77, 99, 311, 1, -43])
 # => [-43]
 
-Benchmark.ips do |x|
-  x.report("hash set: ") {find_duplicates_using_hash_set([1, 2, 3, 1, 5, 6, 7, 8, 5, 2]) }
-  x.report("diff algo: ") {find_duplicates_diff_alg([1, 2, 3, 1, 5, 6, 7, 8, 5, 2]) }
-  x.compare!
-end
+p appears_most_times([4376, -345, -345, 4376, -345, 84945, 4376, -345, -26509, 4376, 84945, 84945, -26509, 896341, 4376])
+# => 4376
+
+# Benchmark.ips do |x|
+#   x.report("hash set: ") {find_duplicates_using_hash_set([1, 2, 3, 1, 5, 6, 7, 8, 5, 2]) }
+#   x.report("diff algo: ") {find_duplicates_diff_alg([1, 2, 3, 1, 5, 6, 7, 8, 5, 2]) }
+#   x.compare!
+# end
