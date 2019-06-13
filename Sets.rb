@@ -16,7 +16,9 @@ set.add?(1) #-> returns nil if elem already exists in set
 
 def find_duplicates_set_approach(array)
   duplicates = []
+  set  = Set.new(array)
   
+  set
   
 end
 
@@ -63,13 +65,16 @@ def appears_most_times(array)
   duplicates.max_by { |key, value| value }.first
 end
 
+p find_duplicates_set_approach([1, 2, 3, 1, 5, 6, 7, 8, 5, 2])
+# => [1, 5, 2]
+
 # p find_duplicates_using_hash_set([1, 2, 3, 1, 5, 6, 7, 8, 5, 2])
 # => [1, 5, 2]
 
 # p find_duplicates([3, 501, 17, 23, -43, 67, 5, 888, -402, 235, 77, 99, 311, 1, -43])
 # => [-43]
 
-p appears_most_times([2367, -65326, 134, -185007, 3291, 7832, -65326, 789, 980, -3289, 3490])
+# p appears_most_times([2367, -65326, 134, -185007, 3291, 7832, -65326, 789, 980, -3289, 3490])
 # => 4376
 
 # Benchmark.ips do |x|

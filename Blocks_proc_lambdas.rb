@@ -87,28 +87,38 @@ def my_all?(data, *args)
 end
 
 def my_inject(data, *init)
-  data = data.to_a
-  start = init.empty? ? 1 : 0
-  acc = init.empty? ? data.first : init
-   
-  start.upto(data.size - 1) do |i|
-     acc = yield(acc, data[i])
+  define_method(:find_op) do |data, binary_op|
+    acc = data.first
+    1.upto(data.size - 1) do |i|
+      acc = acc.send(binary_op, data[i])
+    end
+    acc
   end
+  data = data.to_a
+  binary_op = init.first.to_s
+  acc = method(:find_op).call(data, binary_op) if init.first.is_a?(Symbol)
+  
+  if block_given?
+    start = init.empty? ? 1 : 0
+    acc = init.empty? ? data.first : init.first
+  
+    start.upto(data.size - 1) do |i|
+      acc = yield(acc, data[i])
+    end
+  end
+  
  acc
 end
 
-def named_method
-  
-end
-my_inject([2,4,5]) do |e,f| 
-  e * f
-end
-my_inject({2=>5, 4=>3}) do |e,(k,v)| 
-   e * v
-end
+p my_inject([2,4,5],:+)
+# p 2.send("+", 4)
+p my_inject([2,4,5]) { |e,f|  e * f }
+# my_inject({2=>5, 4=>3}) do |e,(k,v)| 
+#    e * v
+# end
 
  # raise TypErro if range is bad
-p my_all?([1,2,4,5], /t/) { |e| e.is_a?(Integer) } # empty array returns true
+# p my_all?([1,2,4,5], /t/) { |e| e.is_a?(Integer) } # empty array returns true
 
 # p my_all?(1..3){ |e| e.odd?} #true unless block returns false
 # p my_all?([nil, true, 99]) # test for implicit
@@ -126,16 +136,16 @@ def my_map(data, *proc)
   return self.enum_for(:my_map) unless block_given?
   output = []
   my_each(data) { |elem| output << yield(elem) }
+  
   output
 end
 
 
 proc_block = Proc.new { |i| i* i }
-p proc_block.class
+
 # p [1,2,3,4].map(&4)
 # p (1..4).map { "cat"  }
-p "-----"
-p my_map([1,2,3,4], proc_block)
+# p my_map([1,2,3,4], proc_block)
 # p my_map(1..4) { "cat"  }
 
 
