@@ -87,7 +87,8 @@ def my_all?(data, *args)
 end
 
 def my_inject(data, *init)
-  define_method(:find_op) do |data, binary_op|
+  raise LocalJumpError.new('no block given') unless block_given? || init.first.is_a?(Symbol)
+  define_singleton_method(:find_op) do |data, binary_op|
     acc = data.first
     1.upto(data.size - 1) do |i|
       acc = acc.send(binary_op, data[i])
@@ -96,7 +97,7 @@ def my_inject(data, *init)
   end
   data = data.to_a
   binary_op = init.first.to_s
-  acc = method(:find_op).call(data, binary_op) if init.first.is_a?(Symbol)
+  return method(:find_op).call(data, binary_op) if init.first.is_a?(Symbol)
   
   if block_given?
     start = init.empty? ? 1 : 0
@@ -110,7 +111,8 @@ def my_inject(data, *init)
  acc
 end
 
-p my_inject([2,4,5],:+)
+p my_inject([2,4,5], :*)
+p [2,4,5].inject(:*)
 # p 2.send("+", 4)
 p my_inject([2,4,5]) { |e,f|  e * f }
 # my_inject({2=>5, 4=>3}) do |e,(k,v)| 
