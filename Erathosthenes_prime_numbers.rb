@@ -1,4 +1,5 @@
 require 'set'
+require 'prime'
 
 # seive prime numbers from 2 to n
 def erathosthenes_seive(n)
@@ -41,18 +42,41 @@ def primes(max_number)
   integers
 end
 
-
-def number_of_primes(arr)
-  
+def primes_by_suhyeon(n)
+  list = []
+  2.upto(n) { |int|  list << int  }
+  set = list.to_set
+  (2..n).each do |div|
+    set.each do |e|
+      set.delete e if e % div == 0 && e != div
+    end
+  end
+  set.to_a
 end
 
-p erathosthenes_seive(5)
+def prime_by_inbuilt(n)
+  Prime::EratosthenesGenerator.new.take_while { |i| i <= n }
+end
 
-p primes(5)
+def number_of_primes(arr)
+  primes = Prime::EratosthenesGenerator.new.take_while { |i| i <= arr.max }
+  intersect = arr.to_set & primes.to_set
+  intersect.length
+end
 
-# puts number_of_primes([121, 17, 21, 29, 11, 341, 407, 19, 119, 352])
+# p erathosthenes_seive(121)
+
+# p primes(121)
+
+# p primes_by_suhyeon(121)
+
+# p prime_by_inbuilt(121)
+
+puts number_of_primes([2, 3, 5, 6, 9])
+# => 3
+puts number_of_primes([121, 17, 21, 29, 11, 341, 407, 19, 119, 352])
 # => 4
 
-# puts number_of_primes([7, 6, 7, 3, 77, 14, 28, 35, 42])
+puts number_of_primes([7, 6, 7, 3, 77, 14, 28, 35, 42])
 # => 3
 
