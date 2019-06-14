@@ -66,6 +66,12 @@ class SubClass < ParentClass
   end 
   def sub_method
     puts "Instance method in child class"
+    sub_private_method
+  end
+
+  private
+  def sub_private_method
+    "this method is private but called from a public method"
   end
 end
 
@@ -73,4 +79,5 @@ child_obj = SubClass.new("MVA")
 child_obj.parent_method
 p child_obj.name
 child_obj.sub_method
+child_obj.sub_private_method
 
