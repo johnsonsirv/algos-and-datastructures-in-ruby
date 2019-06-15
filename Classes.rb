@@ -83,6 +83,7 @@ child_obj.sub_private_method
 
 class Account
   include Math
+  include Prime
   attr_reader :name, :balance
   
   def initialize(name, balance = 100)
