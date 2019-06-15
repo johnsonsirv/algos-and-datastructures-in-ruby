@@ -80,7 +80,9 @@ child_obj.parent_method
 p child_obj.name
 child_obj.sub_method
 child_obj.sub_private_method
+
 class Account
+  include Math
   attr_reader :name, :balance
   
   def initialize(name, balance = 100)
