@@ -58,11 +58,33 @@ def prime_by_inbuilt(n)
   Prime::EratosthenesGenerator.new.take_while { |i| i <= n }
 end
 
+
 def number_of_primes(arr)
   primes = Prime::EratosthenesGenerator.new.take_while { |i| i <= arr.max }
   intersect = arr.to_set & primes.to_set
   intersect.length
 end
+
+def prime_prime(array)
+  # write your code here
+  primes = Prime::EratosthenesGenerator.new.take_while { |i| i <= array.max }
+  prime_factors = Hash.new(0)
+  primes.each do |prime|
+    array.each do |elem|
+      prime_factors[prime] += 1 if (elem % prime).zero?
+    end
+  end
+  prime_factors.max_by { |key, value| value}.first
+end
+
+p prime_prime([2, 3, 5, 6, 9])
+# => 3
+
+p prime_prime([121, 17, 21, 29, 11, 341, 407, 19, 119, 352])
+# => 11
+
+p prime_prime([7, 6, 7, 3, 77, 14, 28, 35, 42])
+# => 7
 
 # p erathosthenes_seive(121)
 
@@ -72,11 +94,11 @@ end
 
 # p prime_by_inbuilt(121)
 
-puts number_of_primes([2, 3, 5, 6, 9])
+# puts number_of_primes([2, 3, 5, 6, 9])
 # => 3
-puts number_of_primes([121, 17, 21, 29, 11, 341, 407, 19, 119, 352])
+# puts number_of_primes([121, 17, 21, 29, 11, 341, 407, 19, 119, 352])
 # => 4
 
-puts number_of_primes([7, 6, 7, 3, 77, 14, 28, 35, 42])
+# puts number_of_primes([7, 6, 7, 3, 77, 14, 28, 35, 42])
 # => 3
 
