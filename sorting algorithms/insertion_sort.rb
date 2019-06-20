@@ -46,6 +46,24 @@ def sort_itself(array)
   
 end
 
+def running_time(array)
+  # write your code here
+  shift = 0
+  1.upto(array.size - 1) do |indx|
+    current = array[indx]
+    j = indx -1
+    while j >= 0 && array[j] > current
+      array[j + 1] = array[j]
+      j -= 1
+      shift += 1
+    end
+    array[j + 1] = current
+  end
+  shift
+end
+
+puts running_time([2, 1, 3, 1, 2])
+# => 4
 
 # p insertion_sort([1, 3, 2])
 
@@ -57,7 +75,7 @@ end
 #    1 4 4 6 9
 #    1 3 4 6 9
 
-sort_itself([1, 4, 3, 6, 9, 2])
+# sort_itself([1, 4, 3, 6, 9, 2])
 # => 1 4 3 6 9 2
 #    1 3 4 6 9 2
 #    1 3 4 6 9 2
