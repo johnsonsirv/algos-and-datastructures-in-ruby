@@ -41,14 +41,14 @@ def sort_itself(array)
       j -= 1
     end
     array[j + 1] = current
-    puts arr.join(' ')
+    puts array.join(' ')
   end
   
 end
 
-p insertion_sort([1, 3, 2])
+# p insertion_sort([1, 3, 2])
 
-insertion_sort_order([1, 3, 2])
+# insertion_sort_order([1, 3, 2])
 
 # insertion_sort_order([1, 4, 6, 9, 3])
 # => 1 4 6 9 9
