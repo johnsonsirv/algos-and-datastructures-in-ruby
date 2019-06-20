@@ -46,6 +46,7 @@ def sort_itself(array)
   
 end
 
+
 # p insertion_sort([1, 3, 2])
 
 # insertion_sort_order([1, 3, 2])
