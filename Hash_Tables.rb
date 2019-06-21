@@ -26,7 +26,13 @@ end
 def hash_table(array)
   ht = HashMap.new(array.size)
   array.each{ |elem| ht.set(elem, elem)}
-
+  output =[]
+  ht.key_map.each do |elem|
+    if elem
+      elem.each { |key, value| output << key }
+    end
+  end
+  output
 end
 p hash_table([12, 24, 125, 5, 91, 1106, 2, 1021, 29, 3536, 10])
 # => [12, 24, 2, 91, 125, 5, 3536, 1106, 29, 1021, 10]
