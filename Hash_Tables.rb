@@ -9,6 +9,7 @@ class HashMap
     unless @key_map[key]
       @key_map = []
     end
+    
     @key_map << [key, value]
   end
 
@@ -23,7 +24,8 @@ class HashMap
 end
 
 def hash_table(array)
-  
+  ht = HashMap.new(array.size)
+
 end
 p hash_table([12, 24, 125, 5, 91, 1106, 2, 1021, 29, 3536, 10])
 # => [12, 24, 2, 91, 125, 5, 3536, 1106, 29, 1021, 10]
