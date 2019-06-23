@@ -62,7 +62,7 @@ def running_time(array)
   shift
 end
 
-puts running_time([2, 1, 3, 1, 2])
+# puts running_time([2, 1, 3, 1, 2])
 # => 4
 
 # p insertion_sort([1, 3, 2])
@@ -81,3 +81,4 @@ puts running_time([2, 1, 3, 1, 2])
 #    1 3 4 6 9 2
 #    1 3 4 6 9 2
 #    1 2 3 4 6 9
+

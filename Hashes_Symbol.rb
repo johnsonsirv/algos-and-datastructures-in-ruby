@@ -127,7 +127,7 @@ p symbols
 
 string_AZ = Hash[("a".."z").to_a.zip((1..26).to_a)]
 symbol_AZ = Hash[(:a..:z).to_a.zip((1..26).to_a)]
-
+numbers = (1..99).inject({}) { |hash, key| hash[key] = 0; hash}
 string_time = Benchmark.realtime do
   100_000.times { string_AZ["r"] }
 end
