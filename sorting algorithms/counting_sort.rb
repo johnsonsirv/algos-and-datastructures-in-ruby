@@ -58,8 +58,7 @@ def full_counting_sort_prep(array)
   # write your code here
   integers = array.map {|elem| elem.split.first.to_i}
   counts = counting_sort_with_array(integers)
-  prefix_sum = prefix_sum(counts)
-  prefix_sum
+  prefix_sum(counts)
 end
 
 p full_counting_sort_prep(["4 that", "3 be", "0 to", "1 be", "5 question", "1 or", "2 not", "4 is", "2 to", "4 the"])
