@@ -18,9 +18,6 @@ end
 
 
 def connected_graph?(graph)
-  # dfs = graph_DFS_recursive(graph: graph)
-  # hash = graph.values.flatten.uniq
-  # dfs.to_set == hash.to_set
   graph.keys.size == graph_DFS_recursive(graph: graph).size
 end
 
