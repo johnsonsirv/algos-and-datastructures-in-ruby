@@ -65,7 +65,7 @@ def full_counting_sort(array)
   integers = array.map {|elem| elem.split.first.to_i}
   counts = counting_sort_with_array(integers)
   prefix_sum = prefix_sum(counts)
-  sorted_array = Array.new(str_values.size , nil)
+  sorted_array = Array.new(array.size , nil)
   array.reverse_each do |elem|
     idx = elem.split.first.to_i
     val = elem.split.last
