@@ -19,27 +19,18 @@ class BinarySearchTree
       else
           @current = @root
           while true
-            p "current up #{@current.value}"
               if value < @current.value
                   if @current.left.nil?
                       @current.left = @newNode
                       return
                   else
-                    p "current #{@current.value}"
-                      p "current-left #{@current.left.value}"
                       @current = @current.left
                   end
               elsif value > @current.value
-                if value < @root.value
-                  p "not a good BST"
-                  return
-                end
-                p "value here is #{value}"
                   if @current.right.nil?
                       @current.right = @newNode
                       return
                   else
-                    p "current-right #{@current.right.value}"
                       @current = @current.right
                   end
                
@@ -51,41 +42,41 @@ class BinarySearchTree
 
   def pre_order
       @result = []
-      @current = @root
       def traverse(node)
           @result.push(node.value)
           traverse(node.left) if node.left
           traverse(node.right) if node.right
       end
-      traverse(@current)
+      traverse(@root)
       return @result.join(' ')
   end
+
+  def post_order
+    @result = []
+      def traverse(node)
+          traverse(node.left) if node.left
+          traverse(node.right) if node.right
+          @result.push(node.value)
+      end
+      traverse(@root)
+      return @result.join(' ')
+  end
+
+  def in_order
+    
+  end
+
 end
 
 
 def search_tree?(tree)
   bst = BinarySearchTree.new
   tree.each{ |node| bst.insert(node) }
-  bst.pre_order
+  p bst.pre_order
+  bst.post_order
 end
 
-# def search_tree?(tree)
-#   # write your code here
-#   root = tree[0]
-#   isBST =[]
-#   0.upto(tree.size-1) do |i|
-#     print i
-#     left = tree[2*i + 1]
-#     right = tree[2*i + 2]
-#     break if left.nil? || right.nil?
-#     if left <= root && right > root
-#       isBST << true
-#     else
-#       isBST << false
-#     end
-#   end
-#   isBST.include?false ? false : true
-# end
+
 
 # puts search_tree?([10, 4, 12])
 # => true
