@@ -63,7 +63,15 @@ class BinarySearchTree
   end
 
   def in_order
-    
+    @result = []
+    def traverse(node)
+        traverse(node.left) if node.left
+        @result.push(node.value)
+        traverse(node.right) if node.right
+       
+    end
+    traverse(@root)
+    return @result.join(' ')
   end
 
 end
@@ -73,7 +81,8 @@ def search_tree?(tree)
   bst = BinarySearchTree.new
   tree.each{ |node| bst.insert(node) }
   p bst.pre_order
-  bst.post_order
+  p bst.post_order
+  bst.in_order
 end
 
 
