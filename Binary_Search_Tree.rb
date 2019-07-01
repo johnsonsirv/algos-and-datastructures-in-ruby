@@ -42,15 +42,37 @@ class BinarySearchTree
 
     def pre_order
         @result = []
-        @current = @root
         def traverse(node)
             @result.push(node.value)
             traverse(node.left) if node.left
             traverse(node.right) if node.right
         end
-        traverse(@current)
+        traverse(@root)
         return @result.join(' ')
     end
+    def post_order
+        @result = []
+          def traverse(node)
+              traverse(node.left) if node.left
+              traverse(node.right) if node.right
+              @result.push(node.value)
+          end
+          traverse(@root)
+          return @result.join(' ')
+      end
+    
+      def in_order
+        @result = []
+        def traverse(node)
+            traverse(node.left) if node.left
+            @result.push(node.value)
+            traverse(node.right) if node.right
+           
+        end
+        traverse(@root)
+        return @result.join(' ')
+      end
+    
 end
 
 

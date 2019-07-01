@@ -74,12 +74,27 @@ class BinarySearchTree
     return @result.join(' ')
   end
 
+
+  def array_to_tree(array, i)
+    return nil if i >= array.length || array[i] == 0
+  
+    node = Node.new(array[i])
+    node.left = array_to_tree(array, 2*i+1)
+    node.right = array_to_tree(array, 2*i+2)
+  
+    node
+  end
+
 end
+
+
+  
 
 
 def search_tree?(tree)
   bst = BinarySearchTree.new
-  tree.each{ |node| bst.insert(node) }
+  # tree.each{ |node| bst.insert(node) }
+  bst.array_to_tree(tree)
   p bst.pre_order
   p bst.post_order
   bst.in_order
@@ -90,11 +105,11 @@ end
 # puts search_tree?([10, 4, 12])
 # => true
 
-# puts search_tree?([10, 5, 7])
+puts search_tree?([10, 5, 7])
 # => false
 # puts search_tree?([20, 10, 27, 12, 14, 23, 30])
 
-puts search_tree?([20, 10, 27, 5, 14, 23, 30])
+# puts search_tree?([20, 10, 27, 5, 14, 23, 30])
 # true
 
 # puts search_tree?([21, 11, 26, 5, 14, 23, 30, 2, 8, 13, 16, 0, 0, 0, 0])
