@@ -1,3 +1,4 @@
+require 'benchmark/ips'
 
 def pivot(array, start_index = 0, end_index = array.size - 1)
   pivot = array[start_index]
@@ -12,6 +13,8 @@ def pivot(array, start_index = 0, end_index = array.size - 1)
   array[start_index], array[swap_index] = array[swap_index], array[start_index]
   swap_index
 end
+
+
 
 def quicksort(array, left = 0, right = array.length - 1)
   if left < right
@@ -38,9 +41,26 @@ def partition_two(array)
   r.index(pivot)
 end
 
+def partition_three(array)
+  pivot = array.first
+  partioned = array.partition{ |elem| elem < pivot }
+ 
+  r = partioned.first + partioned.last
+  r.index(pivot)
+end
 
+
+
+
+
+Benchmark.ips do |x|
+  x.report("partition_colt_inplace: "){ pivot([4, 5, 3, 9, 1]) }
+  x.report("partition_two_iter: : "){ partition_two([4, 5, 3, 9, 1]) }
+  x.report("partition_three_eneum_method: : "){ partition_three([4, 5, 3, 9, 1]) }
+  x.compare!
+end
 
 
 # p quicksort([5, 8, 1, 3, 7, 10, 2])
-p  partition_two([4, 5, 3, 9, 1])
+# p  pivot([4, 5, 3, 9, 1])
 # => [3, 1, 4, 5, 9]
