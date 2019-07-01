@@ -9,7 +9,6 @@ def partition(array)
     left << array[indx] if pivot > array[indx]
     right << array[indx] if pivot < array[indx]
   end
-  p partition(left) + [pivot] + partition(right)
 end
 
 def simple_quicksort(array)
@@ -24,7 +23,7 @@ def simple_quicksort(array)
   end
   
  output =  simple_quicksort(left) + [pivot] + simple_quicksort(right)
- p "got here #{output}" if output.size > 1
+ puts output.join(' ') if output.size > 1
  output
 end
 
