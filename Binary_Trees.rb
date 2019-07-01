@@ -78,17 +78,17 @@ def balanced_tree?(array_tree)
 end
 
 
-Benchmark.ips do |x|
-  x.report("bal: "){balanced_tree?([1, 2, 0, 3, 4, 0, 0]) }
-  x.report("bal_optimized: "){balanced_tree_optimized?([1, 2, 0, 3, 4, 0, 0]) }
-  x.compare!
-end
-  # tree = array_to_tree([10, 1, 2, 3, 4, 5, 6], 0)
+# Benchmark.ips do |x|
+#   x.report("bal: "){balanced_tree?([1, 2, 0, 3, 4, 0, 0]) }
+#   x.report("bal_optimized: "){balanced_tree_optimized?([1, 2, 0, 3, 4, 0, 0]) }
+#   x.compare!
+# end
+  tree = array_to_tree([1, 7, 5, 2, 6, 0, 9, 3, 7, 5, 11, 0, 0, 4, 0], 0)
   # tree = array_to_tree([1, 2, 0, 3, 4, 0, 0], 0)
   # puts post_order(tree)
   #=> 3 4 1 5 6 2 10
 
-  # puts binary_tree_height(tree)
+  puts binary_tree_height(tree)
 
   # puts balanced_tree?([1, 2, 0, 3, 4, 0, 0])
 # => 3
