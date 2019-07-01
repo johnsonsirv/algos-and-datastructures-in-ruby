@@ -22,20 +22,25 @@ end
     result += "#{node.value} "
     result += dfs_in_order(node.right)
   end
-
-
+ 
 
 def search_tree?(tree)
   bST = array_to_tree(tree, 0)
-  dfs_in_order(bST)
+  arr_in_order = dfs_in_order(bST).split
+  prev = arr_in_order.first.to_i
+  1.upto(arr_in_order.size - 1) do |indx| 
+    return false if arr_in_order[indx].to_i < prev
+    prev = arr_in_order[indx].to_i
+  end
+  true
 end
 
 
 
-# puts search_tree?([10, 4, 12])
+puts search_tree?([10, 4, 12])
 # => true
 
-puts search_tree?([10, 5, 7])
+# puts search_tree?([10, 5, 7])
 # => false
 # puts search_tree?([20, 10, 27, 12, 14, 23, 30])
 
