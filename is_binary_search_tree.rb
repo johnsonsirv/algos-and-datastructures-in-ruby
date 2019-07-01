@@ -1,3 +1,4 @@
+require 'benchmark/ips'
 class Node
   attr_reader :value
   attr_accessor :left, :right
@@ -17,27 +18,38 @@ end
   end
 
   def dfs_in_order(node)
-    return '' if node.nil?
+    return [] if node.nil?
     result = dfs_in_order(node.left)
-    result += "#{node.value} "
+    result << node.value
     result += dfs_in_order(node.right)
   end
  
 
 def search_tree?(tree)
   bST = array_to_tree(tree, 0)
-  arr_in_order = dfs_in_order(bST).split
-  prev = arr_in_order.first.to_i
+  arr_in_order = dfs_in_order(bST)
+  prev = arr_in_order.first
   1.upto(arr_in_order.size - 1) do |indx| 
-    return false if arr_in_order[indx].to_i < prev
-    prev = arr_in_order[indx].to_i
+    return false if arr_in_order[indx] < prev
+    prev = arr_in_order[indx]
   end
   true
 end
 
+def search_tree_model?(tree)
+  bST = array_to_tree(tree, 0)
+  arr_in_order = dfs_in_order(bST)
+  arr_in_order == arr_in_order.sort
+end
 
 
-puts search_tree?([10, 4, 12])
+Benchmark.ips do |x|
+  x.report("search_tree_victor: "){ search_tree?([10, 5, 7]) }
+  x.report("search_tree_model: "){ search_tree_model?([10, 5, 7]) }
+  x.compare!
+end
+
+# puts search_tree?([10, 4, 12])
 # => true
 
 # puts search_tree?([10, 5, 7])
