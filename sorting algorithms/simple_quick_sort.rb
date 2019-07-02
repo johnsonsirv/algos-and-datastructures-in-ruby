@@ -27,12 +27,34 @@ def simple_quicksort(array)
  output
 end
 
+
+def advanced_quicksort(array)
+  # write your code here
+  pivot = array[start_index]
+  swap_index = start_index
+  start_loop = start_index + 1
+  start_loop.upto(end_index) do |idx|
+    if pivot > array[idx]
+      swap_index += 1
+      array[swap_index], array[idx] = array[idx], array[swap_index]
+    end
+    p array
+  end
+  array[start_index], array[swap_index] = array[swap_index], array[start_index]
+  p array
+end
+
+advanced_quicksort([1, 3, 9, 8, 2, 7, 5])
+# => 1 3 2 5 9 7 8
+#    1 2 3 5 9 7 8
+#    1 2 3 5 7 8 9
+
 # def simple_quicksort(array)
 #   output = partition(array)
 #   p output if output.size > 1
 # end
 
-p simple_quicksort([5, 8, 1, 3, 7, 10, 2])
+# p simple_quicksort([5, 8, 1, 3, 7, 10, 2])
 # => 2 3
 #    1 2 3
 #    7 8 10
