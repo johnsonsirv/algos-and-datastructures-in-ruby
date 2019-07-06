@@ -30,18 +30,7 @@ end
 
 def advanced_quicksort(array)
   # write your code here
-  pivot = array[start_index]
-  swap_index = start_index
-  start_loop = start_index + 1
-  start_loop.upto(end_index) do |idx|
-    if pivot > array[idx]
-      swap_index += 1
-      array[swap_index], array[idx] = array[idx], array[swap_index]
-    end
-    p array
-  end
-  array[start_index], array[swap_index] = array[swap_index], array[start_index]
-  p array
+  
 end
 
 advanced_quicksort([1, 3, 9, 8, 2, 7, 5])
