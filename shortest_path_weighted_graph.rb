@@ -2,7 +2,14 @@ def weighted_graphs(matrix)
   # write your code here
   weighted_hash_graph = adjacency_list(matrix)
   station_stops = Array.new(matrix.size, 0)
-  
+  start_node = 0
+  queue = []
+  visited = [start_node]
+
+  until queue.empty?
+    
+  end
+
 end
 
 def adjacency_list(matrix)
@@ -16,7 +23,7 @@ def adjacency_list(matrix)
   hash_graph
 end
 
-def update_station_stops(arr_station_stops, arr_connected_nodes, node )
+def update_station_stops(arr_station_stops, arr_connected_nodes, node, start_position)
   
 end
 
