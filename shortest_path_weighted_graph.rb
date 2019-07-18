@@ -1,7 +1,8 @@
 def weighted_graphs(matrix)
   # write your code here
   weighted_hash_graph = adjacency_list(matrix)
-
+  station_stops = Array.new(matrix.size, 0)
+  
 end
 
 def adjacency_list(matrix)
