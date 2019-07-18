@@ -13,7 +13,7 @@ def weighted_graphs(matrix)
       unless visited.include?(vertex)
           visited << vertex
           queue << vertex
-          min_station_stops[vertex] += get_count_station_stops(neighbours, start_position)
+          min_station_stops[vertex] += get_count_station_stops(weighted_hash_graph[vertex], start_node)
       end
     end
   end
@@ -31,8 +31,8 @@ def adjacency_list(matrix)
   hash_graph
 end
 
-def get_count_station_stops(arr_connected_nodes, start_position)
-  unless arr_connected_nodes.include?(start_position)
+def get_count_station_stops(arr_connected_nodes, start_node)
+  unless arr_connected_nodes.include?(start_node)
     return 2
   end
   return 1
