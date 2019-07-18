@@ -8,11 +8,9 @@ def weighted_graphs(matrix)
 
   until queue.empty?
     current_node = queue.shift
-    neighbours = weighted_hash_graph[current_node]
-    neighbours.each do|vertex|
+    weighted_hash_graph[current_node].each do|vertex|
       unless visited.include?(vertex)
-          visited << vertex
-          queue << vertex
+          visited << vertex &&  queue << vertex
           min_station_stops[vertex] += get_count_station_stops(weighted_hash_graph[vertex], start_node)
       end
     end
@@ -22,9 +20,10 @@ end
 
 def adjacency_list(matrix)
   hash_graph =  Hash.new
-  0.upto(matrix.size - 1) do |row|
+  stop = matrix.size - 1
+  0.upto(stop) do |row|
     hash_graph[row] = []
-    0.upto(matrix.size - 1) do |column|
+    0.upto(stop) do |column|
       hash_graph[row] << column unless matrix[row][column].zero?
     end
   end
@@ -40,3 +39,7 @@ end
 
 p weighted_graphs([[0, 0, 1, 3, 0, 0], [0, 0, 0, 5, 0, 0], [1, 0, 0, 2, 1, 4], [3, 5, 2, 0, 7, 0], [0, 0, 1, 7, 0, 2], [0, 0, 4, 0, 2, 0]])
 # => [0, 2, 1, 1, 2, 2]
+p weighted_graphs([[0, 3, 6, 0, 0, 9, 4], [3, 0, 4, 1, 0, 0, 0], [6, 4, 0, 3, 5, 4, 1], [0, 1, 3, 0, 2, 0, 0], [0, 0, 5, 2, 0, 3, 0], [9, 0, 4, 0, 3, 0, 3], [4, 0, 1, 0, 0, 3, 0]])
+# => [0, 1, 1, 2, 2, 1, 1]
+# p weighted_graphs([[0, 3, 6, 0, 0, 9, 4], [3, 0, 4, 1, 0, 0, 0], [6, 4, 0, 3, 5, 4, 1], [0, 1, 3, 0, 2, 0, 0], [0, 0, 5, 2, 0, 3, 0], [9, 0, 4, 0, 3, 0, 3], [4, 0, 1, 0, 0, 3, 0]])
+# => [0, 1, 1, 3, 2, 2, 3, 3, 4, 1]
