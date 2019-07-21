@@ -29,18 +29,20 @@ end
 def dijkstra(matrix, start, finish)
   weighted_hash_grpah = adjacency_list(matrix)
   queue = PriorityQueue.new
-  distances = Array.new(matrix.size, 0)
+  distances = []
   previous = Hash.new
 
   weighted_hash_grpah.each_key do | vertex|
     if vertex.eql?(start)
       distances[vertex] = 0
+      queue.enqueue(vertex, 0)
     else
       distances[vertex] = Float::INFINITY
+      queue.enqueue(vertex, Float::INFINITY)
     end
   end
 
-  distances
+  queue
 end
 
 # q = PriorityQueue.new
