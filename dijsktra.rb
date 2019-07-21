@@ -1,42 +1,60 @@
+class PriorityQueue
+  # attr_accessor :values
+  def initialize
+    @values = []
+  end
+  def enqueue(vertex, priority)
+    @values << {vertex: vertex, priority: priority}
+    @values.sort_by! { |a| a[:priority] }
+  end
+  def dequeue
+    @values.shift
+  end
+end
+
 def adjacency_list(matrix)
   weighted_hash_graph =  Hash.new
   stop = matrix.size - 1
   0.upto(stop) do |row|
     weighted_hash_graph[row] = []
     0.upto(stop) do |column|
-      weighted_hash_graph[row] << Hash[column, matrix[row][column]] unless matrix[row][column].zero?
+      weighted_hash_graph[row] << {node: column, weight: matrix[row][column]} unless matrix[row][column].zero?
     end
   end
-  weighted_hash_graph #key -> node ; value -> weight
+  weighted_hash_graph
 end
 
-class PriorityQueue
-  def initialize
-    @values = []
-  end
-  
-  def enqueue(vertex, priority)
-    @values << {vertex: vertex, priority: priority}
-    @values.sort_by! { |a| a[:priority] }
 
+
+def dijkstra(matrix, start, finish)
+  weighted_hash_grpah = adjacency_list(matrix)
+  queue = PriorityQueue.new
+  distances = Array.new(matrix.size, 0)
+  previous = Hash.new
+
+  weighted_hash_grpah.each_key do | vertex|
+    if vertex.eql?(start)
+      distances[vertex] = 0
+    else
+      distances[vertex] = Float::INFINITY
+    end
   end
 
-  def dequeue
-    @values.shift
-  end
+  distances
 end
 
-def dijkstra(matrix)
-  adjacency_list(matrix)
+# q = PriorityQueue.new
+# q.enqueue(0,0)
+# q.enqueue(1,Float::INFINITY)
+# q.enqueue(3,Float::INFINITY)
+# q.enqueue(2,Float::INFINITY)
+
+# p q
+
+def shortest_path_wg(matrix)
+  # write your code here
+  dijkstra(matrix, 0, matrix.size - 1)
 end
 
-pQ = PriorityQueue.new
-
-pQ.enqueue("d", 12)
-pQ.enqueue("e", 3)
-pQ.enqueue("b", 1)
-pQ.enqueue("c", 2)
-
-p pQ
-# p dijkstra([[0, 0, 1, 3, 0, 0], [0, 0, 0, 5, 0, 0], [1, 0, 0, 2, 1, 4], [3, 5, 2, 0, 7, 0], [0, 0, 1, 7, 0, 2], [0, 0, 4, 0, 2, 0]])
+p shortest_path_wg([[0, 0, 1, 3, 0, 0], [0, 0, 0, 5, 0, 0], [1, 0, 0, 2, 1, 4], [3, 5, 2, 0, 7, 0], [0, 0, 1, 7, 0, 2], [0, 0, 4, 0, 2, 0]])
 # => [0, 2, 1, 1, 2, 2]
