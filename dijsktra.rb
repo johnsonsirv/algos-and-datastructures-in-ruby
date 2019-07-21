@@ -51,7 +51,14 @@ def dijkstra(matrix, start, finish)
       #done. build path, return
     end
     weighted_hash_graph[current_smallest_node].each do |neighbour|
-      
+      neighbour_weight = neighbour[:weight]
+      neighbour_vertex = neighbour[:vertex]
+      dist = distances[current_smallest_node] + neighbour_weight
+      if dist < distances[neighbour_vertex]
+        distances[neighbour_vertex] = dist
+        previous[neighbour_vertex] = current_smallest_node
+        queue.enqueue(neighbour_vertex, dist)
+      end
     end
   end
 
