@@ -2,16 +2,15 @@ def weighted_graphs(matrix)
   # write your code here
   weighted_hash_graph = adjacency_list(matrix)
   min_station_stops = Array.new(matrix.size, 0)
-  start_node = 0
-  queue = [start_node]
-  visited = [start_node]
+  queue = [0]
+  visited = [0]
 
   until queue.empty?
     current_node = queue.shift
     weighted_hash_graph[current_node].each do|vertex|
       unless visited.include?(vertex)
           visited << vertex &&  queue << vertex
-          min_station_stops[vertex] += get_count_station_stops(weighted_hash_graph[vertex], start_node)
+          min_station_stops[vertex] += get_count_station_stops(weighted_hash_graph[vertex], 0)
       end
     end
   end
