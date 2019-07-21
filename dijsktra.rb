@@ -1,5 +1,5 @@
 class PriorityQueue
-  # attr_accessor :values
+  attr_reader :values
   def initialize
     @values = []
   end
@@ -27,12 +27,12 @@ end
 
 
 def dijkstra(matrix, start, finish)
-  weighted_hash_grpah = adjacency_list(matrix)
+  weighted_hash_graph = adjacency_list(matrix)
   queue = PriorityQueue.new
   distances = []
   previous = []
-
-  weighted_hash_grpah.each_key do | vertex|
+  #inital state setup
+  weighted_hash_graph.each_key do | vertex|
     if vertex.eql?(start)
       distances[vertex] = 0
       queue.enqueue(vertex, 0)
@@ -43,8 +43,18 @@ def dijkstra(matrix, start, finish)
 
     previous[vertex] = nil
   end
+  
+  #util queue is empty
+  until queue.values.empty?
+    current_smallest_node = queue.dequeue[:vertex]
+    if current_smallest_node.eql?(finish)
+      #done. build path, return
+    end
+    weighted_hash_graph[current_smallest_node].each do |neighbour|
+      
+    end
+  end
 
-  previous
 end
 
 # q = PriorityQueue.new
