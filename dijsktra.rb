@@ -7,7 +7,11 @@ def adjacency_list(matrix)
       weighted_hash_graph[row] << Hash[column, matrix[row][column]] unless matrix[row][column].zero?
     end
   end
-  weighted_hash_graph
+  weighted_hash_graph #key -> node ; value -> weight
+end
+
+def priority_queue(vertex, priority)
+  
 end
 
 def dijkstra(matrix)
