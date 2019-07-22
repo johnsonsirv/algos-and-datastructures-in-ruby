@@ -47,7 +47,6 @@ def dijkstra(matrix, start, finish)
   #util queue is empty
   until queue.values.empty?
     current_smallest_node = queue.dequeue[:vertex]
-    p "prev #{previous}"
     return distances if current_smallest_node.eql?(finish)
     weighted_hash_graph[current_smallest_node].each do |neighbour|
       neighbour_weight = neighbour[:weight]
@@ -69,7 +68,7 @@ def shortest_path_wg(matrix)
   dijkstra(matrix, 0, matrix.size - 1)
 end
 
-# p shortest_path_wg([[0, 0, 1, 3, 0, 0], [0, 0, 0, 5, 0, 0], [1, 0, 0, 2, 1, 4], [3, 5, 2, 0, 7, 0], [0, 0, 1, 7, 0, 2], [0, 0, 4, 0, 2, 0]])
+p shortest_path_wg([[0, 0, 1, 3, 0, 0], [0, 0, 0, 5, 0, 0], [1, 0, 0, 2, 1, 4], [3, 5, 2, 0, 7, 0], [0, 0, 1, 7, 0, 2], [0, 0, 4, 0, 2, 0]])
 # => [0, 2, 1, 1, 2, 2]
 # p shortest_path_wg([[0, 3, 6, 0, 0, 9, 4], [3, 0, 4, 1, 0, 0, 0], [6, 4, 0, 3, 5, 4, 1], [0, 1, 3, 0, 2, 0, 0], [0, 0, 5, 2, 0, 3, 0], [9, 0, 4, 0, 3, 0, 3], [4, 0, 1, 0, 0, 3, 0]])
 # [0, 3, 5, 4, 6, 7, 4]
