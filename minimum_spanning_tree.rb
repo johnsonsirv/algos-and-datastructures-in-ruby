@@ -12,7 +12,25 @@ end
 
 def minimum_spanning_tree(matrix)
   # write your code here
+  hash_grpah = adjacency_list(matrix)
+  queue = [0]
+  span_tree = []
   
+  until queue.empty?
+    current_node = queue.shift
+    min_span = Float::INFINITY
+    solved_node = nil
+    hash_grpah[current_node].each do |neighbour|
+      if neighbour[:weight] < min_span
+        min_span = neighbour[:weight]
+        solved_node = neighbour[:node]
+      end
+    end
+    queue << solved_node unless solved_node.nil?
+    span_tree << min_span unless min_span.eql(Float::INFINITY)
+  end
+
+  span_tree
 end
 
 p minimum_spanning_tree([[0, 4, 1, 4, 0, 0, 0, 0, 0, 0], [4, 0, 5, 0, 9, 9, 0, 7, 0, 0], [1, 5, 0, 3, 0, 0, 0, 9, 0, 0], [4, 0, 3, 0, 0, 0, 0, 10, 0, 18], [0, 9, 0, 0, 0, 2, 4, 0, 6, 0], [0, 9, 0, 0, 2, 0, 2, 8, 0, 0], [0, 0, 0, 0, 4, 2, 0, 9, 3, 9], [0, 7, 9, 10, 0, 8, 9, 0, 0, 8], [0, 0, 0, 0, 6, 0, 3, 0, 0, 9], [0, 0, 0, 18, 0, 0, 9, 8, 9, 0]])
