@@ -1,3 +1,15 @@
+def adjacency_list(matrix)
+  weighted_hash_graph =  Hash.new
+  stop = matrix.size - 1
+  0.upto(stop) do |row|
+    weighted_hash_graph[row] = []
+    0.upto(stop) do |column|
+      weighted_hash_graph[row] << {node: column, weight: matrix[row][column]} unless matrix[row][column].zero?
+    end
+  end
+  weighted_hash_graph
+end
+
 def minimum_spanning_tree(matrix)
   # write your code here
   
