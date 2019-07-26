@@ -3,19 +3,19 @@
 def index_match(array)
   # write your code here
   max_ind = array.size - 1
-  pivot = (array.size / 2).floor
-
-  while !pivot.negative? && !array[pivot].nil?
-    temp = array[pivot]
-    return pivot if temp.eql?(pivot)
-    if temp > max_ind
-      pivot -= 1
-    else
-      pivot += 1
-    end
+  start = 0
+  stop = array.size - 1
+  pivot = array.size / 2
+  if array[pivot] > max_ind
+    stop = pivot 
+  else
+    start = pivot
   end
-  
-   -1
+  start.upto(stop) do |indx|
+    return indx if array[indx].eql?(indx)
+  end
+
+  -1
 end
 
 puts index_match([0, 2, 3, 7, 9, 11])
