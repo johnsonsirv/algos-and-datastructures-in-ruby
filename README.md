@@ -25,7 +25,7 @@ Solving Algorithm and Datastructure challenges from <a href="https://repl.it/"> 
 > Clone the repository to your local machine
 
 ```sh
-$ git clone https://github.com/johnsonsirv/repl.it.git
+$ git clone https://github.com/johnsonsirv/algos-and-datastructures-in-ruby.git
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ $ git clone https://github.com/johnsonsirv/repl.it.git
 > Go to the directory
 
 ```sh
-$ cd repl.it
+$ cd algos-and-datastructures-in-ruby
 ```
 
 > Run any of the files
