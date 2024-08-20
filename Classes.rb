@@ -79,11 +79,11 @@ child_obj = SubClass.new("MVA")
 child_obj.parent_method
 p child_obj.name
 child_obj.sub_method
-child_obj.sub_private_method
+# child_obj.sub_private_method # raises NoMethodError
 
 class Account
   include Math
-  include Prime
+  # include Prime
   attr_reader :name, :balance
   
   def initialize(name, balance = 100)
@@ -120,3 +120,49 @@ end
 
 checking_account = Account.new("jerry", 5000)
 
+
+class Numeric
+  include Math
+
+ attr_reader :n 
+  def initialize(num)
+    @n = num
+  end
+
+  def log10
+    return Math.log10(@n).floor
+  end
+end
+
+c = Numeric.new(10)
+p c.log10
+
+
+class DocumentStore
+  attr_reader :capacity
+  attr_accessor :documents
+
+  def initialize(capacity)
+    @capacity = capacity
+    @documents= []
+  end
+
+  def get_documents
+    return @documents.freeze
+  end
+
+  def add_document(document)
+    raise 'Document Store is full' if @documents.size > @capacity
+    @documents.push(document)
+  end
+
+  def inspect
+    return "Document Store: #{@documents.size}/#{@capacity}"
+  end
+end
+
+document_store = DocumentStore.new(2)
+document_store.add_document('Document 1')
+p document_store.inspect
+d = document_store.get_documents
+d.push('From Outside')

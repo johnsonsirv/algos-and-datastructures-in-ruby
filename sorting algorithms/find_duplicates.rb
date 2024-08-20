@@ -6,3 +6,5 @@ def duplicates(arr1, arr2)
   }
   arr2.sort
 end
+
+duplicates([1,1,2], [ 1,4,4,5])
